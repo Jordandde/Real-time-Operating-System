@@ -1,0 +1,1431 @@
+Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
+
+==============================================================================
+
+Section Cross References
+
+    uart_polling.o(i.putc) refers to uart_polling.o(i.uart_put_string) for uart_put_string
+    uart_polling.o(i.putc) refers to uart_polling.o(i.uart_put_char) for uart_put_char
+    uart_polling.o(i.uart_put_string) refers to uart_polling.o(i.uart_put_char) for uart_put_char
+    uart_irq.o(i.UART0_IRQHandler) refers to k_mem.o(i.k_mpool_alloc) for k_mpool_alloc
+    uart_irq.o(i.UART0_IRQHandler) refers to k_mem.o(i.k_mpool_dealloc) for k_mpool_dealloc
+    uart_irq.o(i.UART0_IRQHandler) refers to k_msg.o(i.k_send_general) for k_send_general
+    uart_irq.o(i.UART0_IRQHandler) refers to k_msg.o(i.k_recv_msg_general) for k_recv_msg_general
+    uart_irq.o(i.UART0_IRQHandler) refers to uart_polling.o(i.uart_put_string) for uart_put_string
+    uart_irq.o(i.UART0_IRQHandler) refers to k_task.o(i.k_tsk_yield) for k_tsk_yield
+    uart_irq.o(i.UART0_IRQHandler) refers to uart_irq.o(.data) for g_switch_flag
+    uart_irq.o(i.UART0_IRQHandler) refers to k_msg.o(.data) for uart_mbx
+    uart_irq.o(i.uart_irq_init) refers to uart_irq.o(i.__NVIC_EnableIRQ) for __NVIC_EnableIRQ
+    timer.o(i.TIMER0_IRQHandler) refers to k_mem.o(i.k_mpool_alloc) for k_mpool_alloc
+    timer.o(i.TIMER0_IRQHandler) refers to timer.o(i.get_tick) for get_tick
+    timer.o(i.TIMER0_IRQHandler) refers to k_mem.o(i.k_mpool_dealloc) for k_mpool_dealloc
+    timer.o(i.TIMER0_IRQHandler) refers to k_task.o(i.k_rt_tsk_unsusp) for k_rt_tsk_unsusp
+    timer.o(i.TIMER0_IRQHandler) refers to k_task.o(i.k_tsk_run_new) for k_tsk_run_new
+    timer.o(i.TIMER0_IRQHandler) refers to timer.o(.data) for g_timer_count
+    timer.o(i.TIMER0_IRQHandler) refers to k_task.o(.data) for gp_current_task
+    timer.o(i.timer_irq_init) refers to timer.o(.data) for g_timer_count
+    hal.o(i.SVC_Handler) refers to k_rtx_init.o(i.k_rtx_init) for k_rtx_init
+    hal.o(i.SVC_Handler) refers to k_mem.o(i.k_mpool_alloc) for k_mpool_alloc
+    hal.o(i.SVC_Handler) refers to k_mem.o(i.k_mpool_dealloc) for k_mpool_dealloc
+    hal.o(i.SVC_Handler) refers to k_mem.o(i.k_mpool_dump) for k_mpool_dump
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_tsk_create) for k_tsk_create
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_tsk_exit) for k_tsk_exit
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_tsk_yield) for k_tsk_yield
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_tsk_set_prio) for k_tsk_set_prio
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_tsk_get) for k_tsk_get
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_tsk_gettid) for k_tsk_gettid
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_tsk_ls) for k_tsk_ls
+    hal.o(i.SVC_Handler) refers to k_msg.o(i.k_mbx_create) for k_mbx_create
+    hal.o(i.SVC_Handler) refers to k_msg.o(i.k_send_msg) for k_send_msg
+    hal.o(i.SVC_Handler) refers to k_msg.o(i.k_send_msg_nb) for k_send_msg_nb
+    hal.o(i.SVC_Handler) refers to k_msg.o(i.k_recv_msg) for k_recv_msg
+    hal.o(i.SVC_Handler) refers to k_msg.o(i.k_recv_msg_nb) for k_recv_msg_nb
+    hal.o(i.SVC_Handler) refers to k_msg.o(i.k_mbx_ls) for k_mbx_ls
+    hal.o(i.SVC_Handler) refers to k_msg.o(i.k_mbx_get) for k_mbx_get
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_rt_tsk_set) for k_rt_tsk_set
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_rt_tsk_susp) for k_rt_tsk_susp
+    hal.o(i.SVC_Handler) refers to k_task.o(i.k_rt_tsk_get) for k_rt_tsk_get
+    k_mem.o(i.Coalesce) refers to k_mem.o(i.GetRelativePos) for GetRelativePos
+    k_mem.o(i.Coalesce) refers to k_mem.o(i.exponent) for exponent
+    k_mem.o(i.Coalesce) refers to k_mem.o(i.CheckBit) for CheckBit
+    k_mem.o(i.Coalesce) refers to k_mem.o(i.RemoveFromFreeList) for RemoveFromFreeList
+    k_mem.o(i.Coalesce) refers to k_mem.o(i.FlipBit) for FlipBit
+    k_mem.o(i.Coalesce) refers to k_mem.o(i.AddToFreeList) for AddToFreeList
+    k_mem.o(i.FlipBit) refers to k_mem.o(i.exponent) for exponent
+    k_mem.o(i.GetRelativePos) refers to k_mem.o(i.exponent) for exponent
+    k_mem.o(i.LookForDealloc) refers to k_mem.o(i.exponent) for exponent
+    k_mem.o(i.LookForDealloc) refers to k_mem.o(i.CheckBit) for CheckBit
+    k_mem.o(i.LookForDealloc) refers to k_mem.o(i.FlipBit) for FlipBit
+    k_mem.o(i.LookForDealloc) refers to k_mem.o(i.AddToFreeList) for AddToFreeList
+    k_mem.o(i.LookForDealloc) refers to k_mem.o(i.Coalesce) for Coalesce
+    k_mem.o(i.LookForMemory) refers to k_mem.o(i.exponent) for exponent
+    k_mem.o(i.LookForMemory) refers to k_mem.o(i.FlipBit) for FlipBit
+    k_mem.o(i.WalkFreeList) refers to k_mem.o(i.exponent) for exponent
+    k_mem.o(i.WalkFreeList) refers to printf.o(i.tfp_printf) for tfp_printf
+    k_mem.o(i.k_alloc_k_stack) refers to k_rtx_init.o(.data) for errno
+    k_mem.o(i.k_alloc_k_stack) refers to k_mem.o(.bss) for g_k_stacks
+    k_mem.o(i.k_alloc_user_stack) refers to k_mem.o(i.k_mpool_alloc) for k_mpool_alloc
+    k_mem.o(i.k_alloc_user_stack) refers to k_mem.o(i.log_ceil) for log_ceil
+    k_mem.o(i.k_alloc_user_stack) refers to k_mem.o(i.exponent) for exponent
+    k_mem.o(i.k_alloc_user_stack) refers to k_rtx_init.o(.data) for errno
+    k_mem.o(i.k_mem_init) refers to k_mem.o(i.k_mpool_create) for k_mpool_create
+    k_mem.o(i.k_mpool_alloc) refers to k_mem.o(i.log_ceil) for log_ceil
+    k_mem.o(i.k_mpool_alloc) refers to k_mem.o(i.LookForMemory) for LookForMemory
+    k_mem.o(i.k_mpool_alloc) refers to k_rtx_init.o(.data) for errno
+    k_mem.o(i.k_mpool_alloc) refers to k_mem.o(.bss) for bit_tree_1
+    k_mem.o(i.k_mpool_create) refers to k_rtx_init.o(.data) for errno
+    k_mem.o(i.k_mpool_create) refers to k_mem.o(.bss) for free_list_1
+    k_mem.o(i.k_mpool_dealloc) refers to k_mem.o(i.exponent) for exponent
+    k_mem.o(i.k_mpool_dealloc) refers to k_mem.o(i.LookForDealloc) for LookForDealloc
+    k_mem.o(i.k_mpool_dealloc) refers to k_rtx_init.o(.data) for errno
+    k_mem.o(i.k_mpool_dealloc) refers to k_mem.o(.bss) for bit_tree_1
+    k_mem.o(i.k_mpool_dump) refers to k_mem.o(i.WalkFreeList) for WalkFreeList
+    k_mem.o(i.k_mpool_dump) refers to printf.o(i.tfp_printf) for tfp_printf
+    k_mem.o(i.k_mpool_dump) refers to k_mem.o(.bss) for free_list_1
+    k_msg.o(i.block) refers to k_task.o(i.k_tsk_run_new) for k_tsk_run_new
+    k_msg.o(i.block) refers to k_task.o(.data) for gp_current_task
+    k_msg.o(i.k_mbx_create) refers to k_mem.o(i.k_mpool_alloc) for k_mpool_alloc
+    k_msg.o(i.k_mbx_create) refers to k_task.o(.data) for gp_current_task
+    k_msg.o(i.k_mbx_create) refers to k_rtx_init.o(.data) for errno
+    k_msg.o(i.k_mbx_get) refers to k_task.o(.bss) for g_tcbs
+    k_msg.o(i.k_mbx_get) refers to k_msg.o(.data) for uart_mbx
+    k_msg.o(i.k_mbx_get) refers to k_rtx_init.o(.data) for errno
+    k_msg.o(i.k_mbx_ls) refers to k_rtx_init.o(.data) for errno
+    k_msg.o(i.k_mbx_ls) refers to k_task.o(.bss) for g_tcbs
+    k_msg.o(i.k_recv_msg) refers to k_msg.o(i.k_recv_msg_general) for k_recv_msg_general
+    k_msg.o(i.k_recv_msg) refers to k_task.o(.data) for gp_current_task
+    k_msg.o(i.k_recv_msg_general) refers to k_msg.o(i.block) for block
+    k_msg.o(i.k_recv_msg_general) refers to k_msg.o(i.write_msg_from_waiting_list) for write_msg_from_waiting_list
+    k_msg.o(i.k_recv_msg_general) refers to k_msg.o(i.pop_msg) for pop_msg
+    k_msg.o(i.k_recv_msg_general) refers to k_rtx_init.o(.data) for errno
+    k_msg.o(i.k_recv_msg_general) refers to k_msg.o(.data) for uart_mbx
+    k_msg.o(i.k_recv_msg_general) refers to k_task.o(.data) for gp_current_task
+    k_msg.o(i.k_recv_msg_nb) refers to k_msg.o(i.k_recv_msg_general) for k_recv_msg_general
+    k_msg.o(i.k_recv_msg_nb) refers to k_task.o(.data) for gp_current_task
+    k_msg.o(i.k_send_general) refers to k_mem.o(i.k_mpool_alloc) for k_mpool_alloc
+    k_msg.o(i.k_send_general) refers to k_msg.o(i.enqueueML) for enqueueML
+    k_msg.o(i.k_send_general) refers to k_msg.o(i.block) for block
+    k_msg.o(i.k_send_general) refers to k_msg.o(i.write_msg) for write_msg
+    k_msg.o(i.k_send_general) refers to k_task.o(i.enqueue) for enqueue
+    k_msg.o(i.k_send_general) refers to k_task.o(i.k_tsk_run_new) for k_tsk_run_new
+    k_msg.o(i.k_send_general) refers to k_task.o(i.k_tsk_yield) for k_tsk_yield
+    k_msg.o(i.k_send_general) refers to k_rtx_init.o(.data) for errno
+    k_msg.o(i.k_send_general) refers to k_msg.o(.data) for uart_mbx
+    k_msg.o(i.k_send_general) refers to k_task.o(.bss) for g_tcbs
+    k_msg.o(i.k_send_general) refers to k_task.o(.data) for gp_current_task
+    k_msg.o(i.k_send_msg) refers to k_msg.o(i.k_send_general) for k_send_general
+    k_msg.o(i.k_send_msg_nb) refers to k_msg.o(i.k_send_general) for k_send_general
+    k_msg.o(i.mbx_create_general) refers to k_mem.o(i.k_mpool_alloc) for k_mpool_alloc
+    k_msg.o(i.mbx_create_general) refers to k_msg.o(.data) for uart_mbx
+    k_msg.o(i.write_msg_from_waiting_list) refers to k_msg.o(i.write_unblock_buffer) for write_unblock_buffer
+    k_msg.o(i.write_unblock_buffer) refers to k_msg.o(i.write_msg) for write_msg
+    k_msg.o(i.write_unblock_buffer) refers to k_mem.o(i.k_mpool_dealloc) for k_mpool_dealloc
+    k_msg.o(i.write_unblock_buffer) refers to k_task.o(i.enqueue) for enqueue
+    k_msg.o(i.write_unblock_buffer) refers to k_task.o(i.k_tsk_yield) for k_tsk_yield
+    k_msg.o(i.write_unblock_buffer) refers to k_task.o(.bss) for g_tcbs
+    k_msg.o(i.write_unblock_buffer) refers to k_task.o(.data) for RTList
+    k_rtx_init.o(i.k_pre_rtx_init) refers to k_mem.o(i.k_mem_init) for k_mem_init
+    k_rtx_init.o(i.k_pre_rtx_init) refers to k_mem.o(i.k_alloc_user_stack) for k_alloc_user_stack
+    k_rtx_init.o(i.k_rtx_init) refers to uart_irq.o(i.uart_irq_init) for uart_irq_init
+    k_rtx_init.o(i.k_rtx_init) refers to k_msg.o(i.mbx_create_general) for mbx_create_general
+    k_rtx_init.o(i.k_rtx_init) refers to k_task.o(i.k_tsk_init) for k_tsk_init
+    k_rtx_init.o(i.k_rtx_init) refers to timer.o(i.timer_irq_init) for timer_irq_init
+    k_rtx_init.o(i.k_rtx_init) refers to timer.o(i.timer_freerun_init) for timer_freerun_init
+    k_rtx_init.o(i.k_rtx_init) refers to k_task.o(.emb_text) for k_tsk_start
+    k_rtx_init.o(i.k_rtx_init) refers to k_rtx_init.o(.data) for errno
+    k_rtx_init.o(i.k_rtx_init) refers to k_msg.o(.data) for uart_mbx
+    k_task.o(.emb_text) refers to k_task.o(.data) for gp_current_task
+    k_task.o(i.k_rt_tsk_get) refers to k_task.o(.bss) for g_tcbs
+    k_task.o(i.k_rt_tsk_get) refers to k_rtx_init.o(.data) for errno
+    k_task.o(i.k_rt_tsk_get) refers to k_task.o(.data) for gp_current_task
+    k_task.o(i.k_rt_tsk_set) refers to k_mem.o(i.k_mpool_alloc) for k_mpool_alloc
+    k_task.o(i.k_rt_tsk_set) refers to k_rtx_init.o(.data) for errno
+    k_task.o(i.k_rt_tsk_set) refers to k_task.o(.data) for gp_current_task
+    k_task.o(i.k_rt_tsk_set) refers to timer.o(.data) for g_timer_count
+    k_task.o(i.k_rt_tsk_susp) refers to printf.o(i.tfp_printf) for tfp_printf
+    k_task.o(i.k_rt_tsk_susp) refers to k_task.o(i.k_tsk_run_new) for k_tsk_run_new
+    k_task.o(i.k_rt_tsk_susp) refers to k_task.o(.data) for gp_current_task
+    k_task.o(i.k_rt_tsk_susp) refers to k_rtx_init.o(.data) for errno
+    k_task.o(i.k_rt_tsk_susp) refers to timer.o(.data) for g_timer_count
+    k_task.o(i.k_rt_tsk_unsusp) refers to k_task.o(i.dequeue) for dequeue
+    k_task.o(i.k_rt_tsk_unsusp) refers to k_task.o(i.enqueue) for enqueue
+    k_task.o(i.k_rt_tsk_unsusp) refers to k_task.o(.data) for suspendedList
+    k_task.o(i.k_rt_tsk_unsusp) refers to timer.o(.data) for g_timer_count
+    k_task.o(i.k_tsk_create) refers to k_mem.o(i.log_ceil) for log_ceil
+    k_task.o(i.k_tsk_create) refers to k_mem.o(i.exponent) for exponent
+    k_task.o(i.k_tsk_create) refers to k_task.o(i.k_tsk_create_new) for k_tsk_create_new
+    k_task.o(i.k_tsk_create) refers to k_task.o(i.enqueue) for enqueue
+    k_task.o(i.k_tsk_create) refers to k_task.o(i.k_tsk_run_new) for k_tsk_run_new
+    k_task.o(i.k_tsk_create) refers to k_rtx_init.o(.data) for errno
+    k_task.o(i.k_tsk_create) refers to k_task.o(.bss) for g_tcbs
+    k_task.o(i.k_tsk_create) refers to k_task.o(.data) for g_num_active_tasks
+    k_task.o(i.k_tsk_create_new) refers to k_mem.o(i.log_ceil) for log_ceil
+    k_task.o(i.k_tsk_create_new) refers to k_mem.o(i.exponent) for exponent
+    k_task.o(i.k_tsk_create_new) refers to k_mem.o(i.k_alloc_user_stack) for k_alloc_user_stack
+    k_task.o(i.k_tsk_create_new) refers to k_mem.o(i.k_alloc_k_stack) for k_alloc_k_stack
+    k_task.o(i.k_tsk_create_new) refers to hal.o(.emb_text) for SVC_RTE
+    k_task.o(i.k_tsk_exit) refers to printf.o(i.tfp_printf) for tfp_printf
+    k_task.o(i.k_tsk_exit) refers to k_mem.o(i.k_mpool_dealloc) for k_mpool_dealloc
+    k_task.o(i.k_tsk_exit) refers to k_task.o(i.scheduler) for scheduler
+    k_task.o(i.k_tsk_exit) refers to k_task.o(.emb_text) for k_tsk_switch
+    k_task.o(i.k_tsk_exit) refers to k_task.o(.data) for g_num_active_tasks
+    k_task.o(i.k_tsk_exit) refers to timer.o(.data) for g_timer_count
+    k_task.o(i.k_tsk_get) refers to k_rtx_init.o(.data) for errno
+    k_task.o(i.k_tsk_get) refers to k_task.o(.bss) for g_tcbs
+    k_task.o(i.k_tsk_gettid) refers to k_task.o(.data) for gp_current_task
+    k_task.o(i.k_tsk_init) refers to k_task.o(i.k_tsk_init_first) for k_tsk_init_first
+    k_task.o(i.k_tsk_init) refers to k_task.o(i.k_tsk_create_new) for k_tsk_create_new
+    k_task.o(i.k_tsk_init) refers to k_task.o(i.k_tsk_init_kcd_con) for k_tsk_init_kcd_con
+    k_task.o(i.k_tsk_init) refers to k_task.o(i.enqueue) for enqueue
+    k_task.o(i.k_tsk_init) refers to k_task.o(.bss) for g_tcbs
+    k_task.o(i.k_tsk_init) refers to k_task.o(.data) for g_num_active_tasks
+    k_task.o(i.k_tsk_init_first) refers to null_task.o(i.task_null) for task_null
+    k_task.o(i.k_tsk_init_kcd_con) refers to kcd_task.o(i.task_kcd) for task_kcd
+    k_task.o(i.k_tsk_init_kcd_con) refers to wall_clock_task.o(i.task_wall_clock) for task_wall_clock
+    k_task.o(i.k_tsk_init_kcd_con) refers to cdisp_task.o(i.task_cdisp) for task_cdisp
+    k_task.o(i.k_tsk_ls) refers to k_rtx_init.o(.data) for errno
+    k_task.o(i.k_tsk_ls) refers to k_task.o(.bss) for g_tcbs
+    k_task.o(i.k_tsk_run_new) refers to k_task.o(i.scheduler) for scheduler
+    k_task.o(i.k_tsk_run_new) refers to k_task.o(i.enqueue) for enqueue
+    k_task.o(i.k_tsk_run_new) refers to k_task.o(.emb_text) for k_tsk_switch
+    k_task.o(i.k_tsk_run_new) refers to k_task.o(.data) for gp_current_task
+    k_task.o(i.k_tsk_run_new) refers to k_task.o(.bss) for readyList
+    k_task.o(i.k_tsk_set_prio) refers to k_task.o(i.k_tsk_run_new) for k_tsk_run_new
+    k_task.o(i.k_tsk_set_prio) refers to k_task.o(i.enqueue) for enqueue
+    k_task.o(i.k_tsk_set_prio) refers to k_rtx_init.o(.data) for errno
+    k_task.o(i.k_tsk_set_prio) refers to k_task.o(.bss) for g_tcbs
+    k_task.o(i.k_tsk_set_prio) refers to k_task.o(.data) for gp_current_task
+    k_task.o(i.k_tsk_yield) refers to k_task.o(i.k_tsk_run_new) for k_tsk_run_new
+    k_task.o(i.k_tsk_yield) refers to k_task.o(.data) for gp_current_task
+    k_task.o(i.scheduler) refers to k_task.o(i.dequeue) for dequeue
+    k_task.o(i.scheduler) refers to k_task.o(.data) for RTList
+    k_task.o(i.scheduler) refers to k_task.o(.bss) for readyList
+    printf.o(i.a2i) refers to printf.o(i.a2d) for a2d
+    printf.o(i.i2a) refers to printf.o(i.ui2a) for ui2a
+    printf.o(i.init_printf) refers to printf.o(.data) for stdout_putf
+    printf.o(i.tfp_format) refers to printf.o(i.a2i) for a2i
+    printf.o(i.tfp_format) refers to printf.o(i.ui2a) for ui2a
+    printf.o(i.tfp_format) refers to printf.o(i.putchw) for putchw
+    printf.o(i.tfp_format) refers to printf.o(i.i2a) for i2a
+    printf.o(i.tfp_printf) refers to printf.o(i.tfp_format) for tfp_format
+    printf.o(i.tfp_printf) refers to printf.o(.data) for stdout_putf
+    printf.o(i.tfp_sprintf) refers to printf.o(i.tfp_format) for tfp_format
+    printf.o(i.tfp_sprintf) refers to printf.o(i.putcp) for putcp
+    kcd_task.o(i.clear) refers to kcd_task.o(.bss) for strBuf
+    kcd_task.o(i.cmd_LM) refers to kcd_task.o(i.get_states) for get_states
+    kcd_task.o(i.cmd_LM) refers to printf.o(i.tfp_sprintf) for tfp_sprintf
+    kcd_task.o(i.cmd_LM) refers to tsk_util.o(i.strlen) for strlen
+    kcd_task.o(i.cmd_LM) refers to tsk_util.o(i.prep_msg) for prep_msg
+    kcd_task.o(i.cmd_LT) refers to kcd_task.o(i.get_states) for get_states
+    kcd_task.o(i.cmd_LT) refers to printf.o(i.tfp_sprintf) for tfp_sprintf
+    kcd_task.o(i.cmd_LT) refers to tsk_util.o(i.strlen) for strlen
+    kcd_task.o(i.cmd_LT) refers to tsk_util.o(i.prep_msg) for prep_msg
+    kcd_task.o(i.cmd_map_get) refers to kcd_task.o(.bss) for commands
+    kcd_task.o(i.cmd_map_register) refers to kcd_task.o(.bss) for commands
+    kcd_task.o(i.err) refers to printf.o(i.tfp_sprintf) for tfp_sprintf
+    kcd_task.o(i.err) refers to tsk_util.o(i.strlen) for strlen
+    kcd_task.o(i.err) refers to tsk_util.o(i.prep_msg) for prep_msg
+    kcd_task.o(i.task_kcd) refers to kcd_task.o(i.cmd_map_register) for cmd_map_register
+    kcd_task.o(i.task_kcd) refers to kcd_task.o(i.err) for err
+    kcd_task.o(i.task_kcd) refers to kcd_task.o(i.cmd_LT) for cmd_LT
+    kcd_task.o(i.task_kcd) refers to kcd_task.o(i.cmd_LM) for cmd_LM
+    kcd_task.o(i.task_kcd) refers to kcd_task.o(i.cmd_map_get) for cmd_map_get
+    kcd_task.o(i.task_kcd) refers to tsk_util.o(i.prep_msg) for prep_msg
+    kcd_task.o(i.task_kcd) refers to kcd_task.o(i.clear) for clear
+    kcd_task.o(i.task_kcd) refers to kcd_task.o(.bss) for strBuf
+    wall_clock_task.o(i.task_wall_clock) refers to tsk_util.o(i.prep_msg) for prep_msg
+    wall_clock_task.o(i.task_wall_clock) refers to printf.o(i.tfp_sprintf) for tfp_sprintf
+    wall_clock_task.o(i.task_wall_clock) refers to wall_clock_task.o(i.validateTime) for validateTime
+    wall_clock_task.o(i.task_wall_clock) refers to wall_clock_task.o(i.convertSeconds) for convertSeconds
+    wall_clock_task.o(i.task_wall_clock) refers to timer.o(.data) for g_timer_count
+    tsk_util.o(i.prep_msg) refers to tsk_util.o(i.stringCopy) for stringCopy
+    startup_lpc17xx.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_lpc17xx.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_lpc17xx.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_lpc17xx.o(RESET) refers to startup_lpc17xx.o(STACK) for __initial_sp
+    startup_lpc17xx.o(RESET) refers to startup_lpc17xx.o(.text) for Reset_Handler
+    startup_lpc17xx.o(RESET) refers to ae_util.o(i.HardFault_Handler) for HardFault_Handler
+    startup_lpc17xx.o(RESET) refers to hal.o(i.SVC_Handler) for SVC_Handler
+    startup_lpc17xx.o(RESET) refers to timer.o(i.TIMER0_IRQHandler) for TIMER0_IRQHandler
+    startup_lpc17xx.o(RESET) refers to uart_irq.o(i.UART0_IRQHandler) for UART0_IRQHandler
+    startup_lpc17xx.o(.ARM.__at_0x02FC) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_lpc17xx.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_lpc17xx.o(.text) refers to system_lpc17xx.o(i.SystemInit) for SystemInit
+    startup_lpc17xx.o(.text) refers to __main.o(!!!main) for __main
+    startup_lpc17xx.o(.text) refers to startup_lpc17xx.o(HEAP) for Heap_Mem
+    startup_lpc17xx.o(.text) refers to startup_lpc17xx.o(STACK) for Stack_Mem
+    system_lpc17xx.o(i.SystemCoreClockUpdate) refers to lludivv7m.o(.text) for __aeabi_uldivmod
+    system_lpc17xx.o(i.SystemCoreClockUpdate) refers to system_lpc17xx.o(.data) for SystemCoreClock
+    __main.o(!!!main) refers to __rtentry.o(.ARM.Collect$$rtentry$$00000000) for __rt_entry
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) for __rt_entry_li
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) for __rt_entry_main
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000C) for __rt_entry_postli_1
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$00000009) for __rt_entry_postsh_1
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$00000002) for __rt_entry_presh_1
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry4.o(.ARM.Collect$$rtentry$$00000004) for __rt_entry_sh
+    aeabi_ldiv0_sigfpe.o(.text) refers to rt_div0.o(.text) for __rt_div0
+    __rtentry2.o(.ARM.Collect$$rtentry$$00000008) refers to boardinit2.o(.text) for _platform_post_stackheap_init
+    __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) refers to libinit.o(.ARM.Collect$$libinit$$00000000) for __rt_lib_init
+    __rtentry2.o(.ARM.Collect$$rtentry$$0000000B) refers to boardinit3.o(.text) for _platform_post_lib_init
+    __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) refers to main.o(i.main) for main
+    __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) refers to exit.o(.text) for exit
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$00000001) for .ARM.Collect$$rtentry$$00000001
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$00000008) for .ARM.Collect$$rtentry$$00000008
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) for .ARM.Collect$$rtentry$$0000000A
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$0000000B) for .ARM.Collect$$rtentry$$0000000B
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) for .ARM.Collect$$rtentry$$0000000D
+    __rtentry4.o(.ARM.Collect$$rtentry$$00000004) refers to sys_stackheap_outer.o(.text) for __user_setup_stackheap
+    __rtentry4.o(.ARM.exidx) refers to __rtentry4.o(.ARM.Collect$$rtentry$$00000004) for .ARM.Collect$$rtentry$$00000004
+    rt_div0.o(.text) refers to defsig_fpe_outer.o(.text) for __rt_SIGFPE
+    main.o(i.main) refers to system_lpc17xx.o(i.SystemInit) for SystemInit
+    main.o(i.main) refers to uart_polling.o(i.uart_init) for uart_init
+    main.o(i.main) refers to printf.o(i.init_printf) for init_printf
+    main.o(i.main) refers to ae.o(i.ae_init) for ae_init
+    main.o(i.main) refers to uart_polling.o(i.putc) for putc
+    main.o(i.main) refers to main.o(.data) for sys
+    main.o(i.main) refers to k_rtx_init.o(i.k_pre_rtx_init) for k_pre_rtx_init
+    sys_stackheap_outer.o(.text) refers to libspace.o(.text) for __user_perproc_libspace
+    sys_stackheap_outer.o(.text) refers to startup_lpc17xx.o(.text) for __user_initial_stackheap
+    exit.o(.text) refers to rtexit.o(.ARM.Collect$$rtexit$$00000000) for __rt_exit
+    defsig_fpe_outer.o(.text) refers to defsig_fpe_inner.o(.text) for __rt_SIGFPE_inner
+    defsig_fpe_outer.o(.text) refers to defsig_exit.o(.text) for __sig_exit
+    defsig_fpe_formal.o(.text) refers to rt_raise.o(.text) for __rt_raise
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000002E) for __rt_lib_init_alloca_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000002C) for __rt_lib_init_argv_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000001B) for __rt_lib_init_atexit_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000021) for __rt_lib_init_clock_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000032) for __rt_lib_init_cpp_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000030) for __rt_lib_init_exceptions_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000002) for __rt_lib_init_fp_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000001F) for __rt_lib_init_fp_trap_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000023) for __rt_lib_init_getenv_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000000A) for __rt_lib_init_heap_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000011) for __rt_lib_init_lc_collate_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000013) for __rt_lib_init_lc_ctype_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000015) for __rt_lib_init_lc_monetary_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000017) for __rt_lib_init_lc_numeric_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000019) for __rt_lib_init_lc_time_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000004) for __rt_lib_init_preinit_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000000E) for __rt_lib_init_rand_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000033) for __rt_lib_init_return
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000001D) for __rt_lib_init_signal_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000025) for __rt_lib_init_stdio_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000000C) for __rt_lib_init_user_alloc_1
+    ae.o(i.ae_init) refers to ae.o(i.ae_set_sys_info) for ae_set_sys_info
+    ae.o(i.ae_init) refers to ae.o(i.ae_set_init_tasks_info) for ae_set_init_tasks_info
+    ae.o(i.ae_set_init_tasks_info) refers to ae_tasks10_g39.o(i.set_ae_init_tasks) for set_ae_init_tasks
+    libspace.o(.text) refers to libspace.o(.bss) for __libspace_start
+    rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000004) for __rt_exit_exit
+    rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for __rt_exit_ls
+    rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000002) for __rt_exit_prels_1
+    rtexit.o(.ARM.exidx) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000004) for __rt_exit_exit
+    rtexit.o(.ARM.exidx) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for __rt_exit_ls
+    rtexit.o(.ARM.exidx) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000002) for __rt_exit_prels_1
+    rtexit.o(.ARM.exidx) refers to rtexit.o(.ARM.Collect$$rtexit$$00000000) for .ARM.Collect$$rtexit$$00000000
+    rt_raise.o(.text) refers to __raise.o(.text) for __raise
+    rt_raise.o(.text) refers to sys_exit.o(.text) for _sys_exit
+    defsig_exit.o(.text) refers to sys_exit.o(.text) for _sys_exit
+    defsig_fpe_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    libinit2.o(.ARM.Collect$$libinit$$00000010) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000012) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000014) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000016) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000018) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000026) refers to argv_veneer.o(.emb_text) for __ARM_argv_veneer
+    libinit2.o(.ARM.Collect$$libinit$$00000027) refers to argv_veneer.o(.emb_text) for __ARM_argv_veneer
+    ae_tasks10_g39.o(i.gen_req0) refers to ae_tasks10_g39.o(i.update_ae_xtest) for update_ae_xtest
+    ae_tasks10_g39.o(i.gen_req0) refers to ae_tasks10_g39.o(.bss) for g_tsk_cases
+    ae_tasks10_g39.o(i.gen_req1) refers to ae_tasks10_g39.o(i.update_ae_xtest) for update_ae_xtest
+    ae_tasks10_g39.o(i.gen_req1) refers to ae_tasks10_g39.o(.bss) for g_tsk_cases
+    ae_tasks10_g39.o(i.init_ae_tsk_test) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_tasks10_g39.o(i.init_ae_tsk_test) refers to ae_tasks10_g39.o(.bss) for g_ae_xtest
+    ae_tasks10_g39.o(i.init_ae_tsk_test) refers to ae_tasks10_g39.o(.constdata) for PREFIX
+    ae_tasks10_g39.o(i.set_ae_init_tasks) refers to ae_tasks10_g39.o(i.set_ae_tasks) for set_ae_tasks
+    ae_tasks10_g39.o(i.set_ae_init_tasks) refers to ae_tasks10_g39.o(.bss) for g_init_tasks
+    ae_tasks10_g39.o(i.set_ae_tasks) refers to ae_tasks10_g39.o(i.init_ae_tsk_test) for init_ae_tsk_test
+    ae_tasks10_g39.o(i.set_ae_tasks) refers to ae_tasks10_g39.o(i.task0) for task0
+    ae_tasks10_g39.o(i.task0) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_tasks10_g39.o(i.task0) refers to ae_tasks10_g39.o(i.test0_start) for test0_start
+    ae_tasks10_g39.o(i.task0) refers to ae_util.o(i.strcpy) for strcpy
+    ae_tasks10_g39.o(i.task0) refers to ae_util.o(i.process_sub_result) for process_sub_result
+    ae_tasks10_g39.o(i.task0) refers to ae_tasks10_g39.o(i.update_exec_seq) for update_exec_seq
+    ae_tasks10_g39.o(i.task0) refers to ae_tasks10_g39.o(i.test1_start) for test1_start
+    ae_tasks10_g39.o(i.task0) refers to ae_tasks10_g39.o(.bss) for g_tids
+    ae_tasks10_g39.o(i.task0) refers to ae_tasks10_g39.o(.constdata) for PREFIX_LOG2
+    ae_tasks10_g39.o(i.task0) refers to ae_tasks10_g39.o(.conststring) for .conststring
+    ae_tasks10_g39.o(i.task0) refers to k_rtx_init.o(.data) for errno
+    ae_tasks10_g39.o(i.task1) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_tasks10_g39.o(i.task1) refers to ae_tasks10_g39.o(i.update_exec_seq) for update_exec_seq
+    ae_tasks10_g39.o(i.task1) refers to ae_util.o(i.strcpy) for strcpy
+    ae_tasks10_g39.o(i.task1) refers to ae_util.o(i.process_sub_result) for process_sub_result
+    ae_tasks10_g39.o(i.task1) refers to ae_tasks10_g39.o(.bss) for g_ae_xtest
+    ae_tasks10_g39.o(i.task1) refers to ae_tasks10_g39.o(.constdata) for PREFIX_LOG2
+    ae_tasks10_g39.o(i.task1) refers to ae_tasks10_g39.o(.conststring) for .conststring
+    ae_tasks10_g39.o(i.task1) refers to k_rtx_init.o(.data) for errno
+    ae_tasks10_g39.o(i.task2) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_tasks10_g39.o(i.task2) refers to ae_tasks10_g39.o(i.update_exec_seq) for update_exec_seq
+    ae_tasks10_g39.o(i.task2) refers to ae_tasks10_g39.o(.bss) for g_ae_xtest
+    ae_tasks10_g39.o(i.task2) refers to ae_tasks10_g39.o(.constdata) for PREFIX_LOG2
+    ae_tasks10_g39.o(i.test0_start) refers to ae_tasks10_g39.o(i.gen_req0) for gen_req0
+    ae_tasks10_g39.o(i.test0_start) refers to ae_util.o(i.strcpy) for strcpy
+    ae_tasks10_g39.o(i.test0_start) refers to ae_util.o(i.process_sub_result) for process_sub_result
+    ae_tasks10_g39.o(i.test0_start) refers to ae_util.o(i.test_exit) for test_exit
+    ae_tasks10_g39.o(i.test0_start) refers to ae_tasks10_g39.o(.bss) for g_ae_xtest
+    ae_tasks10_g39.o(i.test0_start) refers to ae_tasks10_g39.o(i.task1) for task1
+    ae_tasks10_g39.o(i.test0_start) refers to ae_tasks10_g39.o(i.task2) for task2
+    ae_tasks10_g39.o(i.test1_start) refers to ae_tasks10_g39.o(i.gen_req1) for gen_req1
+    ae_tasks10_g39.o(i.test1_start) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_tasks10_g39.o(i.test1_start) refers to ae_util.o(i.strcpy) for strcpy
+    ae_tasks10_g39.o(i.test1_start) refers to ae_util.o(i.process_sub_result) for process_sub_result
+    ae_tasks10_g39.o(i.test1_start) refers to printf.o(i.tfp_sprintf) for tfp_sprintf
+    ae_tasks10_g39.o(i.test1_start) refers to ae_util.o(i.test_exit) for test_exit
+    ae_tasks10_g39.o(i.test1_start) refers to ae_tasks10_g39.o(.bss) for g_tsk_cases
+    ae_tasks10_g39.o(i.test1_start) refers to ae_tasks10_g39.o(.constdata) for PREFIX_LOG
+    ae_tasks10_g39.o(i.update_ae_xtest) refers to ae_tasks10_g39.o(.bss) for g_ae_xtest
+    ae_tasks10_g39.o(i.update_exec_seq) refers to ae_tasks10_g39.o(.bss) for g_tsk_cases
+    sys_exit.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_exit.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    rtexit2.o(.ARM.Collect$$rtexit$$00000003) refers to libshutdown.o(.ARM.Collect$$libshutdown$$00000000) for __rt_lib_shutdown
+    rtexit2.o(.ARM.Collect$$rtexit$$00000004) refers to sys_exit.o(.text) for _sys_exit
+    rtexit2.o(.ARM.exidx) refers to rtexit2.o(.ARM.Collect$$rtexit$$00000001) for .ARM.Collect$$rtexit$$00000001
+    rtexit2.o(.ARM.exidx) refers to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for .ARM.Collect$$rtexit$$00000003
+    rtexit2.o(.ARM.exidx) refers to rtexit2.o(.ARM.Collect$$rtexit$$00000004) for .ARM.Collect$$rtexit$$00000004
+    __raise.o(.text) refers to defsig.o(CL$$defsig) for __default_signal_handler
+    defsig_general.o(.text) refers to sys_wrch.o(.text) for _ttywrch
+    argv_veneer.o(.emb_text) refers to no_argv.o(.text) for __ARM_get_argv
+    ae_util.o(i.HardFault_Handler) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_util.o(i.HardFault_Handler) refers to ae_util.o(i.test_abort) for test_abort
+    ae_util.o(i.HardFault_Handler) refers to ae_tasks10_g39.o(.constdata) for PREFIX
+    ae_util.o(i.HardFault_Handler) refers to ae_tasks10_g39.o(.bss) for g_ae_xtest
+    ae_util.o(i.print_log) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_util.o(i.print_log) refers to ae_tasks10_g39.o(.constdata) for PREFIX_LOG
+    ae_util.o(i.print_results) refers to ae_util.o(i.count_set_bits) for count_set_bits
+    ae_util.o(i.print_results) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_util.o(i.print_results) refers to ae_tasks10_g39.o(.constdata) for PREFIX_LOG
+    ae_util.o(i.print_results) refers to ae_tasks10_g39.o(.bss) for g_ae_xtest
+    ae_util.o(i.print_summary) refers to ae_util.o(i.print_results) for print_results
+    ae_util.o(i.print_summary) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_util.o(i.print_summary) refers to ae.o(i.ae_exit) for ae_exit
+    ae_util.o(i.print_summary) refers to ae_tasks10_g39.o(.bss) for g_ae_cases
+    ae_util.o(i.print_summary) refers to ae_tasks10_g39.o(.constdata) for PREFIX
+    ae_util.o(i.process_sub_result) refers to ae_util.o(i.print_log) for print_log
+    ae_util.o(i.process_sub_result) refers to ae_tasks10_g39.o(.bss) for g_ae_cases
+    ae_util.o(i.test_abort) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_util.o(i.test_abort) refers to ae_util.o(i.print_summary) for print_summary
+    ae_util.o(i.test_abort) refers to ae_tasks10_g39.o(.bss) for g_ae_xtest
+    ae_util.o(i.test_abort) refers to ae_tasks10_g39.o(.constdata) for PREFIX
+    ae_util.o(i.test_exit) refers to printf.o(i.tfp_printf) for tfp_printf
+    ae_util.o(i.test_exit) refers to ae_util.o(i.print_summary) for print_summary
+    ae_util.o(i.test_exit) refers to ae_tasks10_g39.o(.constdata) for PREFIX
+    sys_wrch.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_wrch.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    defsig.o(CL$$defsig) refers to defsig_fpe_inner.o(.text) for __rt_SIGFPE_inner
+    defsig.o(CL$$defsig) refers to defsig_rtmem_inner.o(.text) for __rt_SIGRTMEM_inner
+    _get_argv_nomalloc.o(.text) refers (Special) to hrguard.o(.text) for __heap_region$guard
+    _get_argv_nomalloc.o(.text) refers to defsig_rtmem_outer.o(.text) for __rt_SIGRTMEM
+    _get_argv_nomalloc.o(.text) refers to sys_command.o(.text) for _sys_command_string
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000004) for __rt_lib_shutdown_cpp_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000002) for __rt_lib_shutdown_fini_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000009) for __rt_lib_shutdown_fp_trap_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000011) for __rt_lib_shutdown_heap_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000012) for __rt_lib_shutdown_return
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C) for __rt_lib_shutdown_signal_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000006) for __rt_lib_shutdown_stdio_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$0000000E) for __rt_lib_shutdown_user_alloc_1
+    sys_command.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_command.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    defsig_abrt_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_rtred_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_rtmem_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_rtmem_outer.o(.text) refers to defsig_rtmem_inner.o(.text) for __rt_SIGRTMEM_inner
+    defsig_rtmem_outer.o(.text) refers to defsig_exit.o(.text) for __sig_exit
+    defsig_rtmem_formal.o(.text) refers to rt_raise.o(.text) for __rt_raise
+    defsig_stak_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_pvfn_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_cppl_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_segv_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_other.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing uart_polling.o(.rev16_text), (4 bytes).
+    Removing uart_polling.o(.revsh_text), (4 bytes).
+    Removing uart_polling.o(.rrx_text), (6 bytes).
+    Removing uart_polling.o(i.uart_get_char), (48 bytes).
+    Removing uart_irq.o(.rev16_text), (4 bytes).
+    Removing uart_irq.o(.revsh_text), (4 bytes).
+    Removing uart_irq.o(.rrx_text), (6 bytes).
+    Removing timer.o(.rev16_text), (4 bytes).
+    Removing timer.o(.revsh_text), (4 bytes).
+    Removing timer.o(.rrx_text), (6 bytes).
+    Removing hal.o(.rev16_text), (4 bytes).
+    Removing hal.o(.revsh_text), (4 bytes).
+    Removing hal.o(.rrx_text), (6 bytes).
+    Removing k_mem.o(.rev16_text), (4 bytes).
+    Removing k_mem.o(.revsh_text), (4 bytes).
+    Removing k_mem.o(.rrx_text), (6 bytes).
+    Removing k_mem.o(.constdata), (8 bytes).
+    Removing k_msg.o(.rev16_text), (4 bytes).
+    Removing k_msg.o(.revsh_text), (4 bytes).
+    Removing k_msg.o(.rrx_text), (6 bytes).
+    Removing k_rtx_init.o(.rev16_text), (4 bytes).
+    Removing k_rtx_init.o(.revsh_text), (4 bytes).
+    Removing k_rtx_init.o(.rrx_text), (6 bytes).
+    Removing k_rtx_init.o(i.k_get_sys_info), (6 bytes).
+    Removing k_task.o(.rev16_text), (4 bytes).
+    Removing k_task.o(.revsh_text), (4 bytes).
+    Removing k_task.o(.rrx_text), (6 bytes).
+    Removing cdisp_task.o(.rev16_text), (4 bytes).
+    Removing cdisp_task.o(.revsh_text), (4 bytes).
+    Removing cdisp_task.o(.rrx_text), (6 bytes).
+    Removing kcd_task.o(.rev16_text), (4 bytes).
+    Removing kcd_task.o(.revsh_text), (4 bytes).
+    Removing kcd_task.o(.rrx_text), (6 bytes).
+    Removing null_task.o(.rev16_text), (4 bytes).
+    Removing null_task.o(.revsh_text), (4 bytes).
+    Removing null_task.o(.rrx_text), (6 bytes).
+    Removing wall_clock_task.o(.rev16_text), (4 bytes).
+    Removing wall_clock_task.o(.revsh_text), (4 bytes).
+    Removing wall_clock_task.o(.rrx_text), (6 bytes).
+    Removing tsk_util.o(.rev16_text), (4 bytes).
+    Removing tsk_util.o(.revsh_text), (4 bytes).
+    Removing tsk_util.o(.rrx_text), (6 bytes).
+    Removing tsk_util.o(i.copyHeader), (18 bytes).
+    Removing system_lpc17xx.o(.rev16_text), (4 bytes).
+    Removing system_lpc17xx.o(.revsh_text), (4 bytes).
+    Removing system_lpc17xx.o(.rrx_text), (6 bytes).
+    Removing system_lpc17xx.o(i.SystemCoreClockUpdate), (424 bytes).
+    Removing system_lpc17xx.o(.data), (4 bytes).
+    Removing main.o(.rev16_text), (4 bytes).
+    Removing main.o(.revsh_text), (4 bytes).
+
+50 unused section(s) (total 712 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    RESET                                    0x00000000   Section      204  startup_lpc17xx.o(RESET)
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
+    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_ldiv0_sigfpe.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_ldiv0.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_div0.o ABSOLUTE
+    ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
+    ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
+    ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
+    ../clib/longlong.s                       0x00000000   Number         0  lludivv7m.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
+    ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
+    ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
+    RTE\Device\LPC1768\startup_LPC17xx.s     0x00000000   Number         0  startup_lpc17xx.o ABSOLUTE
+    RTE\Device\LPC1768\system_LPC17xx.c      0x00000000   Number         0  system_lpc17xx.o ABSOLUTE
+    RTE\\Device\\LPC1768\\system_LPC17xx.c   0x00000000   Number         0  system_lpc17xx.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    src\\bsp\\LPC1768\\timer.c               0x00000000   Number         0  timer.o ABSOLUTE
+    src\\bsp\\LPC1768\\uart_irq.c            0x00000000   Number         0  uart_irq.o ABSOLUTE
+    src\\bsp\\LPC1768\\uart_polling.c        0x00000000   Number         0  uart_polling.o ABSOLUTE
+    src\\kernel\\HAL.c                       0x00000000   Number         0  hal.o ABSOLUTE
+    src\\kernel\\k_mem.c                     0x00000000   Number         0  k_mem.o ABSOLUTE
+    src\\kernel\\k_msg.c                     0x00000000   Number         0  k_msg.o ABSOLUTE
+    src\\kernel\\k_rtx_init.c                0x00000000   Number         0  k_rtx_init.o ABSOLUTE
+    src\\kernel\\k_task.c                    0x00000000   Number         0  k_task.o ABSOLUTE
+    src\\main.c                              0x00000000   Number         0  main.o ABSOLUTE
+    src\\tasks\\cdisp_task.c                 0x00000000   Number         0  cdisp_task.o ABSOLUTE
+    src\\tasks\\kcd_task.c                   0x00000000   Number         0  kcd_task.o ABSOLUTE
+    src\\tasks\\null_task.c                  0x00000000   Number         0  null_task.o ABSOLUTE
+    src\\tasks\\tsk_util.c                   0x00000000   Number         0  tsk_util.o ABSOLUTE
+    src\\tasks\\wall_clock_task.c            0x00000000   Number         0  wall_clock_task.o ABSOLUTE
+    src\ae\ae.c                              0x00000000   Number         0  ae.o ABSOLUTE
+    src\ae\ae_tasks10_G39.c                  0x00000000   Number         0  ae_tasks10_g39.o ABSOLUTE
+    src\ae\ae_util.c                         0x00000000   Number         0  ae_util.o ABSOLUTE
+    src\bsp\LPC1768\timer.c                  0x00000000   Number         0  timer.o ABSOLUTE
+    src\bsp\LPC1768\uart_irq.c               0x00000000   Number         0  uart_irq.o ABSOLUTE
+    src\bsp\LPC1768\uart_polling.c           0x00000000   Number         0  uart_polling.o ABSOLUTE
+    src\kernel\HAL.c                         0x00000000   Number         0  hal.o ABSOLUTE
+    src\kernel\k_mem.c                       0x00000000   Number         0  k_mem.o ABSOLUTE
+    src\kernel\k_msg.c                       0x00000000   Number         0  k_msg.o ABSOLUTE
+    src\kernel\k_rtx_init.c                  0x00000000   Number         0  k_rtx_init.o ABSOLUTE
+    src\kernel\k_task.c                      0x00000000   Number         0  k_task.o ABSOLUTE
+    src\libu\printf.c                        0x00000000   Number         0  printf.o ABSOLUTE
+    src\main.c                               0x00000000   Number         0  main.o ABSOLUTE
+    src\tasks\cdisp_task.c                   0x00000000   Number         0  cdisp_task.o ABSOLUTE
+    src\tasks\kcd_task.c                     0x00000000   Number         0  kcd_task.o ABSOLUTE
+    src\tasks\null_task.c                    0x00000000   Number         0  null_task.o ABSOLUTE
+    src\tasks\tsk_util.c                     0x00000000   Number         0  tsk_util.o ABSOLUTE
+    src\tasks\wall_clock_task.c              0x00000000   Number         0  wall_clock_task.o ABSOLUTE
+    !!!main                                  0x000000cc   Section        8  __main.o(!!!main)
+    !!!scatter                               0x000000d4   Section       52  __scatter.o(!!!scatter)
+    !!handler_copy                           0x00000108   Section       26  __scatter_copy.o(!!handler_copy)
+    !!handler_zi                             0x00000124   Section       28  __scatter_zi.o(!!handler_zi)
+    .ARM.Collect$$libinit$$00000000          0x00000140   Section        2  libinit.o(.ARM.Collect$$libinit$$00000000)
+    .ARM.Collect$$libinit$$00000002          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000002)
+    .ARM.Collect$$libinit$$00000004          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000004)
+    .ARM.Collect$$libinit$$0000000A          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000000A)
+    .ARM.Collect$$libinit$$0000000C          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000000C)
+    .ARM.Collect$$libinit$$0000000E          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000000E)
+    .ARM.Collect$$libinit$$00000011          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000011)
+    .ARM.Collect$$libinit$$00000013          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000013)
+    .ARM.Collect$$libinit$$00000015          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000015)
+    .ARM.Collect$$libinit$$00000017          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000017)
+    .ARM.Collect$$libinit$$00000019          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000019)
+    .ARM.Collect$$libinit$$0000001B          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000001B)
+    .ARM.Collect$$libinit$$0000001D          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000001D)
+    .ARM.Collect$$libinit$$0000001F          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000001F)
+    .ARM.Collect$$libinit$$00000021          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000021)
+    .ARM.Collect$$libinit$$00000023          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000023)
+    .ARM.Collect$$libinit$$00000025          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000025)
+    .ARM.Collect$$libinit$$0000002C          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000002C)
+    .ARM.Collect$$libinit$$0000002E          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000002E)
+    .ARM.Collect$$libinit$$00000030          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000030)
+    .ARM.Collect$$libinit$$00000032          0x00000142   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000032)
+    .ARM.Collect$$libinit$$00000033          0x00000142   Section        2  libinit2.o(.ARM.Collect$$libinit$$00000033)
+    .ARM.Collect$$libshutdown$$00000000      0x00000144   Section        2  libshutdown.o(.ARM.Collect$$libshutdown$$00000000)
+    .ARM.Collect$$libshutdown$$00000002      0x00000146   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000002)
+    .ARM.Collect$$libshutdown$$00000004      0x00000146   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000004)
+    .ARM.Collect$$libshutdown$$00000006      0x00000146   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000006)
+    .ARM.Collect$$libshutdown$$00000009      0x00000146   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000009)
+    .ARM.Collect$$libshutdown$$0000000C      0x00000146   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C)
+    .ARM.Collect$$libshutdown$$0000000E      0x00000146   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000E)
+    .ARM.Collect$$libshutdown$$00000011      0x00000146   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000011)
+    .ARM.Collect$$libshutdown$$00000012      0x00000146   Section        2  libshutdown2.o(.ARM.Collect$$libshutdown$$00000012)
+    .ARM.Collect$$rtentry$$00000000          0x00000148   Section        0  __rtentry.o(.ARM.Collect$$rtentry$$00000000)
+    .ARM.Collect$$rtentry$$00000002          0x00000148   Section        0  __rtentry2.o(.ARM.Collect$$rtentry$$00000002)
+    .ARM.Collect$$rtentry$$00000004          0x00000148   Section        6  __rtentry4.o(.ARM.Collect$$rtentry$$00000004)
+    .ARM.Collect$$rtentry$$00000009          0x0000014e   Section        0  __rtentry2.o(.ARM.Collect$$rtentry$$00000009)
+    .ARM.Collect$$rtentry$$0000000A          0x0000014e   Section        4  __rtentry2.o(.ARM.Collect$$rtentry$$0000000A)
+    .ARM.Collect$$rtentry$$0000000C          0x00000152   Section        0  __rtentry2.o(.ARM.Collect$$rtentry$$0000000C)
+    .ARM.Collect$$rtentry$$0000000D          0x00000152   Section        8  __rtentry2.o(.ARM.Collect$$rtentry$$0000000D)
+    .ARM.Collect$$rtexit$$00000000           0x0000015a   Section        2  rtexit.o(.ARM.Collect$$rtexit$$00000000)
+    .ARM.Collect$$rtexit$$00000002           0x0000015c   Section        0  rtexit2.o(.ARM.Collect$$rtexit$$00000002)
+    .ARM.Collect$$rtexit$$00000003           0x0000015c   Section        4  rtexit2.o(.ARM.Collect$$rtexit$$00000003)
+    .ARM.Collect$$rtexit$$00000004           0x00000160   Section        6  rtexit2.o(.ARM.Collect$$rtexit$$00000004)
+    .emb_text                                0x00000168   Section        8  hal.o(.emb_text)
+    .emb_text                                0x00000170   Section       50  k_task.o(.emb_text)
+    .text                                    0x000001a4   Section       60  startup_lpc17xx.o(.text)
+    .text                                    0x000001e0   Section        0  heapauxi.o(.text)
+    .text                                    0x000001e6   Section       74  sys_stackheap_outer.o(.text)
+    .text                                    0x00000230   Section        0  exit.o(.text)
+    .text                                    0x00000244   Section        8  libspace.o(.text)
+    .text                                    0x0000024c   Section        0  sys_exit.o(.text)
+    .text                                    0x00000258   Section        2  use_no_semi.o(.text)
+    .text                                    0x0000025a   Section        0  indicate_semi.o(.text)
+    i.AddToFreeList                          0x0000025a   Section        0  k_mem.o(i.AddToFreeList)
+    i.CheckBit                               0x00000286   Section        0  k_mem.o(i.CheckBit)
+    i.GetRelativePos                         0x000002b8   Section        0  k_mem.o(i.GetRelativePos)
+    i.ae_exit                                0x000002f8   Section        0  ae.o(i.ae_exit)
+    .ARM.__at_0x02FC                         0x000002fc   Section        4  startup_lpc17xx.o(.ARM.__at_0x02FC)
+    i.Coalesce                               0x00000300   Section        0  k_mem.o(i.Coalesce)
+    i.FlipBit                                0x0000043c   Section        0  k_mem.o(i.FlipBit)
+    i.HardFault_Handler                      0x0000048c   Section        0  ae_util.o(i.HardFault_Handler)
+    i.LookForDealloc                         0x000004bc   Section        0  k_mem.o(i.LookForDealloc)
+    i.LookForMemory                          0x00000580   Section        0  k_mem.o(i.LookForMemory)
+    i.RemoveFromFreeList                     0x00000644   Section        0  k_mem.o(i.RemoveFromFreeList)
+    i.SVC_Handler                            0x00000674   Section        0  hal.o(i.SVC_Handler)
+    i.SystemInit                             0x0000079c   Section        0  system_lpc17xx.o(i.SystemInit)
+    i.TIMER0_IRQHandler                      0x000008dc   Section        0  timer.o(i.TIMER0_IRQHandler)
+    i.UART0_IRQHandler                       0x00000930   Section        0  uart_irq.o(i.UART0_IRQHandler)
+    i.WalkFreeList                           0x00000a3c   Section        0  k_mem.o(i.WalkFreeList)
+    i.__NVIC_EnableIRQ                       0x00000aa4   Section        0  uart_irq.o(i.__NVIC_EnableIRQ)
+    __NVIC_EnableIRQ                         0x00000aa5   Thumb Code    34  uart_irq.o(i.__NVIC_EnableIRQ)
+    i.a2d                                    0x00000ac6   Section        0  printf.o(i.a2d)
+    a2d                                      0x00000ac7   Thumb Code    50  printf.o(i.a2d)
+    i.a2i                                    0x00000af8   Section        0  printf.o(i.a2i)
+    a2i                                      0x00000af9   Thumb Code    58  printf.o(i.a2i)
+    i.ae_init                                0x00000b32   Section        0  ae.o(i.ae_init)
+    i.ae_set_init_tasks_info                 0x00000b62   Section        0  ae.o(i.ae_set_init_tasks_info)
+    i.ae_set_sys_info                        0x00000b78   Section        0  ae.o(i.ae_set_sys_info)
+    i.block                                  0x00000b90   Section        0  k_msg.o(i.block)
+    i.clear                                  0x00000bb4   Section        0  kcd_task.o(i.clear)
+    i.cmd_LM                                 0x00000bcc   Section        0  kcd_task.o(i.cmd_LM)
+    i.cmd_LT                                 0x00000c6c   Section        0  kcd_task.o(i.cmd_LT)
+    i.cmd_map_get                            0x00000ce4   Section        0  kcd_task.o(i.cmd_map_get)
+    i.cmd_map_register                       0x00000d14   Section        0  kcd_task.o(i.cmd_map_register)
+    i.convertSeconds                         0x00000d40   Section        0  wall_clock_task.o(i.convertSeconds)
+    i.count_set_bits                         0x00000d86   Section        0  ae_util.o(i.count_set_bits)
+    i.dequeue                                0x00000d98   Section        0  k_task.o(i.dequeue)
+    i.enqueue                                0x00000dc8   Section        0  k_task.o(i.enqueue)
+    i.enqueueML                              0x00000e52   Section        0  k_msg.o(i.enqueueML)
+    i.err                                    0x00000e88   Section        0  kcd_task.o(i.err)
+    i.exponent                               0x00000efc   Section        0  k_mem.o(i.exponent)
+    i.gen_req0                               0x00000f18   Section        0  ae_tasks10_g39.o(i.gen_req0)
+    i.gen_req1                               0x00000f64   Section        0  ae_tasks10_g39.o(i.gen_req1)
+    i.get_states                             0x00000fac   Section        0  kcd_task.o(i.get_states)
+    i.get_tick                               0x00001010   Section        0  timer.o(i.get_tick)
+    i.i2a                                    0x00001058   Section        0  printf.o(i.i2a)
+    i2a                                      0x00001059   Thumb Code    32  printf.o(i.i2a)
+    i.init_ae_tsk_test                       0x00001078   Section        0  ae_tasks10_g39.o(i.init_ae_tsk_test)
+    i.init_printf                            0x000010f4   Section        0  printf.o(i.init_printf)
+    i.k_alloc_k_stack                        0x00001108   Section        0  k_mem.o(i.k_alloc_k_stack)
+    i.k_alloc_user_stack                     0x00001134   Section        0  k_mem.o(i.k_alloc_user_stack)
+    i.k_mbx_create                           0x00001180   Section        0  k_msg.o(i.k_mbx_create)
+    i.k_mbx_get                              0x00001258   Section        0  k_msg.o(i.k_mbx_get)
+    i.k_mbx_ls                               0x0000129c   Section        0  k_msg.o(i.k_mbx_ls)
+    i.k_mem_init                             0x000012ec   Section        0  k_mem.o(i.k_mem_init)
+    i.k_mpool_alloc                          0x0000132c   Section        0  k_mem.o(i.k_mpool_alloc)
+    i.k_mpool_create                         0x000013a8   Section        0  k_mem.o(i.k_mpool_create)
+    i.k_mpool_dealloc                        0x0000140c   Section        0  k_mem.o(i.k_mpool_dealloc)
+    i.k_mpool_dump                           0x000014e8   Section        0  k_mem.o(i.k_mpool_dump)
+    i.k_pre_rtx_init                         0x00001548   Section        0  k_rtx_init.o(i.k_pre_rtx_init)
+    i.k_recv_msg                             0x00001570   Section        0  k_msg.o(i.k_recv_msg)
+    i.k_recv_msg_general                     0x0000158c   Section        0  k_msg.o(i.k_recv_msg_general)
+    i.k_recv_msg_nb                          0x0000162c   Section        0  k_msg.o(i.k_recv_msg_nb)
+    i.k_rt_tsk_get                           0x00001648   Section        0  k_task.o(i.k_rt_tsk_get)
+    i.k_rt_tsk_set                           0x000016b4   Section        0  k_task.o(i.k_rt_tsk_set)
+    i.k_rt_tsk_susp                          0x00001774   Section        0  k_task.o(i.k_rt_tsk_susp)
+    i.k_rt_tsk_unsusp                        0x00001818   Section        0  k_task.o(i.k_rt_tsk_unsusp)
+    i.k_rtx_init                             0x00001878   Section        0  k_rtx_init.o(i.k_rtx_init)
+    i.k_send_general                         0x000018cc   Section        0  k_msg.o(i.k_send_general)
+    i.k_send_msg                             0x00001b60   Section        0  k_msg.o(i.k_send_msg)
+    i.k_send_msg_nb                          0x00001b74   Section        0  k_msg.o(i.k_send_msg_nb)
+    i.k_tsk_create                           0x00001b88   Section        0  k_task.o(i.k_tsk_create)
+    i.k_tsk_create_new                       0x00001c7c   Section        0  k_task.o(i.k_tsk_create_new)
+    i.k_tsk_exit                             0x00001d78   Section        0  k_task.o(i.k_tsk_exit)
+    i.k_tsk_get                              0x00001e40   Section        0  k_task.o(i.k_tsk_get)
+    i.k_tsk_gettid                           0x00001ecc   Section        0  k_task.o(i.k_tsk_gettid)
+    i.k_tsk_init                             0x00001ed8   Section        0  k_task.o(i.k_tsk_init)
+    i.k_tsk_init_first                       0x00002000   Section        0  k_task.o(i.k_tsk_init_first)
+    i.k_tsk_init_kcd_con                     0x0000201c   Section        0  k_task.o(i.k_tsk_init_kcd_con)
+    i.k_tsk_ls                               0x0000206c   Section        0  k_task.o(i.k_tsk_ls)
+    i.k_tsk_run_new                          0x000020bc   Section        0  k_task.o(i.k_tsk_run_new)
+    i.k_tsk_set_prio                         0x0000217c   Section        0  k_task.o(i.k_tsk_set_prio)
+    i.k_tsk_yield                            0x00002318   Section        0  k_task.o(i.k_tsk_yield)
+    i.log_ceil                               0x00002334   Section        0  k_mem.o(i.log_ceil)
+    i.main                                   0x00002358   Section        0  main.o(i.main)
+    i.mbx_create_general                     0x000023c0   Section        0  k_msg.o(i.mbx_create_general)
+    i.pop_msg                                0x00002448   Section        0  k_msg.o(i.pop_msg)
+    i.prep_msg                               0x0000249a   Section        0  tsk_util.o(i.prep_msg)
+    i.print_log                              0x000024dc   Section        0  ae_util.o(i.print_log)
+    i.print_results                          0x0000254c   Section        0  ae_util.o(i.print_results)
+    i.print_summary                          0x0000266c   Section        0  ae_util.o(i.print_summary)
+    i.process_sub_result                     0x00002698   Section        0  ae_util.o(i.process_sub_result)
+    i.putc                                   0x000026d0   Section        0  uart_polling.o(i.putc)
+    i.putchw                                 0x00002714   Section        0  printf.o(i.putchw)
+    putchw                                   0x00002715   Thumb Code    82  printf.o(i.putchw)
+    i.putcp                                  0x00002766   Section        0  printf.o(i.putcp)
+    putcp                                    0x00002767   Thumb Code    10  printf.o(i.putcp)
+    i.scheduler                              0x00002770   Section        0  k_task.o(i.scheduler)
+    i.set_ae_init_tasks                      0x0000283c   Section        0  ae_tasks10_g39.o(i.set_ae_init_tasks)
+    i.set_ae_tasks                           0x00002858   Section        0  ae_tasks10_g39.o(i.set_ae_tasks)
+    i.strcpy                                 0x0000289c   Section        0  ae_util.o(i.strcpy)
+    i.stringCopy                             0x000028bc   Section        0  tsk_util.o(i.stringCopy)
+    i.strlen                                 0x000028dc   Section        0  tsk_util.o(i.strlen)
+    i.task0                                  0x000028f0   Section        0  ae_tasks10_g39.o(i.task0)
+    i.task1                                  0x00002c38   Section        0  ae_tasks10_g39.o(i.task1)
+    i.task2                                  0x00002d64   Section        0  ae_tasks10_g39.o(i.task2)
+    i.task_cdisp                             0x00002de0   Section        0  cdisp_task.o(i.task_cdisp)
+    i.task_kcd                               0x00002e1c   Section        0  kcd_task.o(i.task_kcd)
+    i.task_null                              0x00002f40   Section        0  null_task.o(i.task_null)
+    i.task_wall_clock                        0x00002f48   Section        0  wall_clock_task.o(i.task_wall_clock)
+    i.test0_start                            0x000030e4   Section        0  ae_tasks10_g39.o(i.test0_start)
+    i.test1_start                            0x00003290   Section        0  ae_tasks10_g39.o(i.test1_start)
+    i.test_abort                             0x00003504   Section        0  ae_util.o(i.test_abort)
+    i.test_exit                              0x00003570   Section        0  ae_util.o(i.test_exit)
+    i.tfp_format                             0x00003594   Section        0  printf.o(i.tfp_format)
+    i.tfp_printf                             0x000036bc   Section        0  printf.o(i.tfp_printf)
+    i.tfp_sprintf                            0x000036e8   Section        0  printf.o(i.tfp_sprintf)
+    i.timer_freerun_init                     0x00003714   Section        0  timer.o(i.timer_freerun_init)
+    i.timer_irq_init                         0x000037b4   Section        0  timer.o(i.timer_irq_init)
+    i.uart_init                              0x00003834   Section        0  uart_polling.o(i.uart_init)
+    i.uart_irq_init                          0x000038a0   Section        0  uart_irq.o(i.uart_irq_init)
+    i.uart_put_char                          0x0000395c   Section        0  uart_polling.o(i.uart_put_char)
+    i.uart_put_string                        0x00003990   Section        0  uart_polling.o(i.uart_put_string)
+    i.ui2a                                   0x000039b6   Section        0  printf.o(i.ui2a)
+    ui2a                                     0x000039b7   Thumb Code    86  printf.o(i.ui2a)
+    i.update_ae_xtest                        0x00003a0c   Section        0  ae_tasks10_g39.o(i.update_ae_xtest)
+    i.update_exec_seq                        0x00003a24   Section        0  ae_tasks10_g39.o(i.update_exec_seq)
+    i.validateTime                           0x00003a68   Section        0  wall_clock_task.o(i.validateTime)
+    i.write_msg                              0x00003aca   Section        0  k_msg.o(i.write_msg)
+    i.write_msg_from_waiting_list            0x00003b0e   Section        0  k_msg.o(i.write_msg_from_waiting_list)
+    i.write_unblock_buffer                   0x00003b50   Section        0  k_msg.o(i.write_unblock_buffer)
+    .constdata                               0x00003c5c   Section       36  ae_tasks10_g39.o(.constdata)
+    .conststring                             0x00003c80   Section     1362  ae_tasks10_g39.o(.conststring)
+    .data                                    0x10000000   Section        4  uart_irq.o(.data)
+    .data                                    0x10000004   Section        4  timer.o(.data)
+    .data                                    0x10000008   Section        4  k_msg.o(.data)
+    .data                                    0x1000000c   Section        4  k_rtx_init.o(.data)
+    .data                                    0x10000010   Section       24  k_task.o(.data)
+    .data                                    0x10000028   Section        8  printf.o(.data)
+    stdout_putf                              0x10000028   Data           4  printf.o(.data)
+    stdout_putp                              0x1000002c   Data           4  printf.o(.data)
+    .data                                    0x10000030   Section       16  main.o(.data)
+    sys                                      0x10000030   Data           8  main.o(.data)
+    p_tasks                                  0x10000038   Data           4  main.o(.data)
+    num                                      0x1000003c   Data           4  main.o(.data)
+    .bss                                     0x10000040   Section    10680  k_mem.o(.bss)
+    .bss                                     0x100029f8   Section      492  k_task.o(.bss)
+    .bss                                     0x10002be4   Section      312  kcd_task.o(.bss)
+    .bss                                     0x10002d1c   Section       96  libspace.o(.bss)
+    .bss                                     0x10002d7c   Section      580  ae_tasks10_g39.o(.bss)
+    HEAP                                     0x10002fc0   Section        0  startup_lpc17xx.o(HEAP)
+    STACK                                    0x10002fc0   Section      512  startup_lpc17xx.o(STACK)
+    Heap_Mem                                 0x10002fc0   Data           0  startup_lpc17xx.o(HEAP)
+    Stack_Mem                                0x10002fc0   Data         512  startup_lpc17xx.o(STACK)
+    __initial_sp                             0x100031c0   Data           0  startup_lpc17xx.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$UX$STANDARDLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __ARM_use_no_argv                        0x00000000   Number         0  main.o ABSOLUTE
+    __Vectors                                0x00000000   Data           4  startup_lpc17xx.o(RESET)
+    __ARM_exceptions_init                     - Undefined Weak Reference
+    __alloca_initialize                       - Undefined Weak Reference
+    __arm_fini_                               - Undefined Weak Reference
+    __arm_preinit_                            - Undefined Weak Reference
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    __rt_locale                               - Undefined Weak Reference
+    __sigvec_lookup                           - Undefined Weak Reference
+    _atexit_init                              - Undefined Weak Reference
+    _call_atexit_fns                          - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _fp_trap_init                             - Undefined Weak Reference
+    _fp_trap_shutdown                         - Undefined Weak Reference
+    _get_lc_collate                           - Undefined Weak Reference
+    _get_lc_ctype                             - Undefined Weak Reference
+    _get_lc_monetary                          - Undefined Weak Reference
+    _get_lc_numeric                           - Undefined Weak Reference
+    _get_lc_time                              - Undefined Weak Reference
+    _getenv_init                              - Undefined Weak Reference
+    _handle_redirection                       - Undefined Weak Reference
+    _init_alloc                               - Undefined Weak Reference
+    _init_user_alloc                          - Undefined Weak Reference
+    _initio                                   - Undefined Weak Reference
+    _rand_init                                - Undefined Weak Reference
+    _signal_finish                            - Undefined Weak Reference
+    _signal_init                              - Undefined Weak Reference
+    _terminate_alloc                          - Undefined Weak Reference
+    _terminate_user_alloc                     - Undefined Weak Reference
+    _terminateio                              - Undefined Weak Reference
+    __main                                   0x000000cd   Thumb Code     8  __main.o(!!!main)
+    __scatterload                            0x000000d5   Thumb Code     0  __scatter.o(!!!scatter)
+    __scatterload_rt2                        0x000000d5   Thumb Code    44  __scatter.o(!!!scatter)
+    __scatterload_rt2_thumb_only             0x000000d5   Thumb Code     0  __scatter.o(!!!scatter)
+    __scatterload_null                       0x000000e3   Thumb Code     0  __scatter.o(!!!scatter)
+    __scatterload_copy                       0x00000109   Thumb Code    26  __scatter_copy.o(!!handler_copy)
+    __scatterload_zeroinit                   0x00000125   Thumb Code    28  __scatter_zi.o(!!handler_zi)
+    __rt_lib_init                            0x00000141   Thumb Code     0  libinit.o(.ARM.Collect$$libinit$$00000000)
+    __rt_lib_init_alloca_1                   0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000002E)
+    __rt_lib_init_argv_1                     0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000002C)
+    __rt_lib_init_atexit_1                   0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000001B)
+    __rt_lib_init_clock_1                    0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000021)
+    __rt_lib_init_cpp_1                      0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000032)
+    __rt_lib_init_exceptions_1               0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000030)
+    __rt_lib_init_fp_1                       0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000002)
+    __rt_lib_init_fp_trap_1                  0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000001F)
+    __rt_lib_init_getenv_1                   0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000023)
+    __rt_lib_init_heap_1                     0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000000A)
+    __rt_lib_init_lc_collate_1               0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000011)
+    __rt_lib_init_lc_ctype_1                 0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000013)
+    __rt_lib_init_lc_monetary_1              0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000015)
+    __rt_lib_init_lc_numeric_1               0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000017)
+    __rt_lib_init_lc_time_1                  0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000019)
+    __rt_lib_init_preinit_1                  0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000004)
+    __rt_lib_init_rand_1                     0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000000E)
+    __rt_lib_init_return                     0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000033)
+    __rt_lib_init_signal_1                   0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000001D)
+    __rt_lib_init_stdio_1                    0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000025)
+    __rt_lib_init_user_alloc_1               0x00000143   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000000C)
+    __rt_lib_shutdown                        0x00000145   Thumb Code     0  libshutdown.o(.ARM.Collect$$libshutdown$$00000000)
+    __rt_lib_shutdown_cpp_1                  0x00000147   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000004)
+    __rt_lib_shutdown_fini_1                 0x00000147   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000002)
+    __rt_lib_shutdown_fp_trap_1              0x00000147   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000009)
+    __rt_lib_shutdown_heap_1                 0x00000147   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000011)
+    __rt_lib_shutdown_return                 0x00000147   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000012)
+    __rt_lib_shutdown_signal_1               0x00000147   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C)
+    __rt_lib_shutdown_stdio_1                0x00000147   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000006)
+    __rt_lib_shutdown_user_alloc_1           0x00000147   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000E)
+    __rt_entry                               0x00000149   Thumb Code     0  __rtentry.o(.ARM.Collect$$rtentry$$00000000)
+    __rt_entry_presh_1                       0x00000149   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$00000002)
+    __rt_entry_sh                            0x00000149   Thumb Code     0  __rtentry4.o(.ARM.Collect$$rtentry$$00000004)
+    __rt_entry_li                            0x0000014f   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$0000000A)
+    __rt_entry_postsh_1                      0x0000014f   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$00000009)
+    __rt_entry_main                          0x00000153   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$0000000D)
+    __rt_entry_postli_1                      0x00000153   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$0000000C)
+    __rt_exit                                0x0000015b   Thumb Code     0  rtexit.o(.ARM.Collect$$rtexit$$00000000)
+    __rt_exit_ls                             0x0000015d   Thumb Code     0  rtexit2.o(.ARM.Collect$$rtexit$$00000003)
+    __rt_exit_prels_1                        0x0000015d   Thumb Code     0  rtexit2.o(.ARM.Collect$$rtexit$$00000002)
+    __rt_exit_exit                           0x00000161   Thumb Code     0  rtexit2.o(.ARM.Collect$$rtexit$$00000004)
+    SVC_RTE                                  0x00000169   Thumb Code     0  hal.o(.emb_text)
+    __rte                                    0x00000169   Thumb Code     8  hal.o(.emb_text)
+    k_tsk_switch                             0x00000171   Thumb Code    44  k_task.o(.emb_text)
+    K_RESTORE                                0x00000183   Thumb Code     0  k_task.o(.emb_text)
+    k_tsk_start                              0x000001a1   Thumb Code     2  k_task.o(.emb_text)
+    Reset_Handler                            0x000001a5   Thumb Code     8  startup_lpc17xx.o(.text)
+    NMI_Handler                              0x000001ad   Thumb Code     2  startup_lpc17xx.o(.text)
+    MemManage_Handler                        0x000001b1   Thumb Code     2  startup_lpc17xx.o(.text)
+    BusFault_Handler                         0x000001b3   Thumb Code     2  startup_lpc17xx.o(.text)
+    UsageFault_Handler                       0x000001b5   Thumb Code     2  startup_lpc17xx.o(.text)
+    DebugMon_Handler                         0x000001b9   Thumb Code     2  startup_lpc17xx.o(.text)
+    PendSV_Handler                           0x000001bb   Thumb Code     2  startup_lpc17xx.o(.text)
+    SysTick_Handler                          0x000001bd   Thumb Code     2  startup_lpc17xx.o(.text)
+    ADC_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    BOD_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    CANActivity_IRQHandler                   0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    CAN_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    DMA_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    EINT0_IRQHandler                         0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    EINT1_IRQHandler                         0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    EINT2_IRQHandler                         0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    EINT3_IRQHandler                         0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    ENET_IRQHandler                          0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    I2C0_IRQHandler                          0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    I2C1_IRQHandler                          0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    I2C2_IRQHandler                          0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    I2S_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    MCPWM_IRQHandler                         0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    PLL0_IRQHandler                          0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    PLL1_IRQHandler                          0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    PWM1_IRQHandler                          0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    QEI_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    RIT_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    RTC_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    SPI_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    SSP0_IRQHandler                          0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    SSP1_IRQHandler                          0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    TIMER1_IRQHandler                        0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    TIMER2_IRQHandler                        0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    TIMER3_IRQHandler                        0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    UART1_IRQHandler                         0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    UART2_IRQHandler                         0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    UART3_IRQHandler                         0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    USBActivity_IRQHandler                   0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    USB_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    WDT_IRQHandler                           0x000001bf   Thumb Code     0  startup_lpc17xx.o(.text)
+    __user_initial_stackheap                 0x000001c1   Thumb Code     0  startup_lpc17xx.o(.text)
+    __use_two_region_memory                  0x000001e1   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x000001e3   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x000001e5   Thumb Code     2  heapauxi.o(.text)
+    __user_setup_stackheap                   0x000001e7   Thumb Code    74  sys_stackheap_outer.o(.text)
+    exit                                     0x00000231   Thumb Code    18  exit.o(.text)
+    __user_libspace                          0x00000245   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x00000245   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x00000245   Thumb Code     0  libspace.o(.text)
+    _sys_exit                                0x0000024d   Thumb Code     8  sys_exit.o(.text)
+    __I$use$semihosting                      0x00000259   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x00000259   Thumb Code     2  use_no_semi.o(.text)
+    AddToFreeList                            0x0000025b   Thumb Code    44  k_mem.o(i.AddToFreeList)
+    __semihosting_library_function           0x0000025b   Thumb Code     0  indicate_semi.o(.text)
+    CheckBit                                 0x00000287   Thumb Code    48  k_mem.o(i.CheckBit)
+    GetRelativePos                           0x000002b9   Thumb Code    54  k_mem.o(i.GetRelativePos)
+    ae_exit                                  0x000002f9   Thumb Code     4  ae.o(i.ae_exit)
+    Coalesce                                 0x00000301   Thumb Code   308  k_mem.o(i.Coalesce)
+    FlipBit                                  0x0000043d   Thumb Code    78  k_mem.o(i.FlipBit)
+    HardFault_Handler                        0x0000048d   Thumb Code    22  ae_util.o(i.HardFault_Handler)
+    LookForDealloc                           0x000004bd   Thumb Code   186  k_mem.o(i.LookForDealloc)
+    LookForMemory                            0x00000581   Thumb Code   186  k_mem.o(i.LookForMemory)
+    RemoveFromFreeList                       0x00000645   Thumb Code    48  k_mem.o(i.RemoveFromFreeList)
+    SVC_Handler                              0x00000675   Thumb Code   296  hal.o(i.SVC_Handler)
+    SystemInit                               0x0000079d   Thumb Code   302  system_lpc17xx.o(i.SystemInit)
+    TIMER0_IRQHandler                        0x000008dd   Thumb Code    74  timer.o(i.TIMER0_IRQHandler)
+    UART0_IRQHandler                         0x00000931   Thumb Code   246  uart_irq.o(i.UART0_IRQHandler)
+    WalkFreeList                             0x00000a3d   Thumb Code    90  k_mem.o(i.WalkFreeList)
+    ae_init                                  0x00000b33   Thumb Code    48  ae.o(i.ae_init)
+    ae_set_init_tasks_info                   0x00000b63   Thumb Code    22  ae.o(i.ae_set_init_tasks_info)
+    ae_set_sys_info                          0x00000b79   Thumb Code    22  ae.o(i.ae_set_sys_info)
+    block                                    0x00000b91   Thumb Code    32  k_msg.o(i.block)
+    clear                                    0x00000bb5   Thumb Code    20  kcd_task.o(i.clear)
+    cmd_LM                                   0x00000bcd   Thumb Code   118  kcd_task.o(i.cmd_LM)
+    cmd_LT                                   0x00000c6d   Thumb Code    96  kcd_task.o(i.cmd_LT)
+    cmd_map_get                              0x00000ce5   Thumb Code    42  kcd_task.o(i.cmd_map_get)
+    cmd_map_register                         0x00000d15   Thumb Code    40  kcd_task.o(i.cmd_map_register)
+    convertSeconds                           0x00000d41   Thumb Code    70  wall_clock_task.o(i.convertSeconds)
+    count_set_bits                           0x00000d87   Thumb Code    18  ae_util.o(i.count_set_bits)
+    dequeue                                  0x00000d99   Thumb Code    48  k_task.o(i.dequeue)
+    enqueue                                  0x00000dc9   Thumb Code   138  k_task.o(i.enqueue)
+    enqueueML                                0x00000e53   Thumb Code    52  k_msg.o(i.enqueueML)
+    err                                      0x00000e89   Thumb Code    72  kcd_task.o(i.err)
+    exponent                                 0x00000efd   Thumb Code    28  k_mem.o(i.exponent)
+    gen_req0                                 0x00000f19   Thumb Code    72  ae_tasks10_g39.o(i.gen_req0)
+    gen_req1                                 0x00000f65   Thumb Code    68  ae_tasks10_g39.o(i.gen_req1)
+    get_states                               0x00000fad   Thumb Code    40  kcd_task.o(i.get_states)
+    get_tick                                 0x00001011   Thumb Code    58  timer.o(i.get_tick)
+    init_ae_tsk_test                         0x00001079   Thumb Code    96  ae_tasks10_g39.o(i.init_ae_tsk_test)
+    init_printf                              0x000010f5   Thumb Code    10  printf.o(i.init_printf)
+    k_alloc_k_stack                          0x00001109   Thumb Code    36  k_mem.o(i.k_alloc_k_stack)
+    k_alloc_user_stack                       0x00001135   Thumb Code    72  k_mem.o(i.k_alloc_user_stack)
+    k_mbx_create                             0x00001181   Thumb Code   208  k_msg.o(i.k_mbx_create)
+    k_mbx_get                                0x00001259   Thumb Code    54  k_msg.o(i.k_mbx_get)
+    k_mbx_ls                                 0x0000129d   Thumb Code    70  k_msg.o(i.k_mbx_ls)
+    k_mem_init                               0x000012ed   Thumb Code    48  k_mem.o(i.k_mem_init)
+    k_mpool_alloc                            0x0000132d   Thumb Code   104  k_mem.o(i.k_mpool_alloc)
+    k_mpool_create                           0x000013a9   Thumb Code    80  k_mem.o(i.k_mpool_create)
+    k_mpool_dealloc                          0x0000140d   Thumb Code   184  k_mem.o(i.k_mpool_dealloc)
+    k_mpool_dump                             0x000014e9   Thumb Code    56  k_mem.o(i.k_mpool_dump)
+    k_pre_rtx_init                           0x00001549   Thumb Code    38  k_rtx_init.o(i.k_pre_rtx_init)
+    k_recv_msg                               0x00001571   Thumb Code    24  k_msg.o(i.k_recv_msg)
+    k_recv_msg_general                       0x0000158d   Thumb Code   148  k_msg.o(i.k_recv_msg_general)
+    k_recv_msg_nb                            0x0000162d   Thumb Code    24  k_msg.o(i.k_recv_msg_nb)
+    k_rt_tsk_get                             0x00001649   Thumb Code    96  k_task.o(i.k_rt_tsk_get)
+    k_rt_tsk_set                             0x000016b5   Thumb Code   178  k_task.o(i.k_rt_tsk_set)
+    k_rt_tsk_susp                            0x00001775   Thumb Code   112  k_task.o(i.k_rt_tsk_susp)
+    k_rt_tsk_unsusp                          0x00001819   Thumb Code    84  k_task.o(i.k_rt_tsk_unsusp)
+    k_rtx_init                               0x00001879   Thumb Code    74  k_rtx_init.o(i.k_rtx_init)
+    k_send_general                           0x000018cd   Thumb Code   634  k_msg.o(i.k_send_general)
+    k_send_msg                               0x00001b61   Thumb Code    20  k_msg.o(i.k_send_msg)
+    k_send_msg_nb                            0x00001b75   Thumb Code    20  k_msg.o(i.k_send_msg_nb)
+    k_tsk_create                             0x00001b89   Thumb Code   222  k_task.o(i.k_tsk_create)
+    k_tsk_create_new                         0x00001c7d   Thumb Code   248  k_task.o(i.k_tsk_create_new)
+    k_tsk_exit                               0x00001d79   Thumb Code   146  k_task.o(i.k_tsk_exit)
+    k_tsk_get                                0x00001e41   Thumb Code   132  k_task.o(i.k_tsk_get)
+    k_tsk_gettid                             0x00001ecd   Thumb Code     8  k_task.o(i.k_tsk_gettid)
+    k_tsk_init                               0x00001ed9   Thumb Code   276  k_task.o(i.k_tsk_init)
+    k_tsk_init_first                         0x00002001   Thumb Code    22  k_task.o(i.k_tsk_init_first)
+    k_tsk_init_kcd_con                       0x0000201d   Thumb Code    68  k_task.o(i.k_tsk_init_kcd_con)
+    k_tsk_ls                                 0x0000206d   Thumb Code    70  k_task.o(i.k_tsk_ls)
+    k_tsk_run_new                            0x000020bd   Thumb Code   176  k_task.o(i.k_tsk_run_new)
+    k_tsk_set_prio                           0x0000217d   Thumb Code   396  k_task.o(i.k_tsk_set_prio)
+    k_tsk_yield                              0x00002319   Thumb Code    22  k_task.o(i.k_tsk_yield)
+    log_ceil                                 0x00002335   Thumb Code    34  k_mem.o(i.log_ceil)
+    main                                     0x00002359   Thumb Code    84  main.o(i.main)
+    mbx_create_general                       0x000023c1   Thumb Code   132  k_msg.o(i.mbx_create_general)
+    pop_msg                                  0x00002449   Thumb Code    82  k_msg.o(i.pop_msg)
+    prep_msg                                 0x0000249b   Thumb Code    64  tsk_util.o(i.prep_msg)
+    print_log                                0x000024dd   Thumb Code    42  ae_util.o(i.print_log)
+    print_results                            0x0000254d   Thumb Code   118  ae_util.o(i.print_results)
+    print_summary                            0x0000266d   Thumb Code    22  ae_util.o(i.print_summary)
+    process_sub_result                       0x00002699   Thumb Code    46  ae_util.o(i.process_sub_result)
+    putc                                     0x000026d1   Thumb Code    28  uart_polling.o(i.putc)
+    scheduler                                0x00002771   Thumb Code   192  k_task.o(i.scheduler)
+    set_ae_init_tasks                        0x0000283d   Thumb Code    24  ae_tasks10_g39.o(i.set_ae_init_tasks)
+    set_ae_tasks                             0x00002859   Thumb Code    64  ae_tasks10_g39.o(i.set_ae_tasks)
+    strcpy                                   0x0000289d   Thumb Code    32  ae_util.o(i.strcpy)
+    stringCopy                               0x000028bd   Thumb Code    32  tsk_util.o(i.stringCopy)
+    strlen                                   0x000028dd   Thumb Code    18  tsk_util.o(i.strlen)
+    task0                                    0x000028f1   Thumb Code   646  ae_tasks10_g39.o(i.task0)
+    task1                                    0x00002c39   Thumb Code   206  ae_tasks10_g39.o(i.task1)
+    task2                                    0x00002d65   Thumb Code    50  ae_tasks10_g39.o(i.task2)
+    task_cdisp                               0x00002de1   Thumb Code    56  cdisp_task.o(i.task_cdisp)
+    task_kcd                                 0x00002e1d   Thumb Code   286  kcd_task.o(i.task_kcd)
+    task_null                                0x00002f41   Thumb Code     6  null_task.o(i.task_null)
+    task_wall_clock                          0x00002f49   Thumb Code   342  wall_clock_task.o(i.task_wall_clock)
+    test0_start                              0x000030e5   Thumb Code   242  ae_tasks10_g39.o(i.test0_start)
+    test1_start                              0x00003291   Thumb Code   370  ae_tasks10_g39.o(i.test1_start)
+    test_abort                               0x00003505   Thumb Code    36  ae_util.o(i.test_abort)
+    test_exit                                0x00003571   Thumb Code    16  ae_util.o(i.test_exit)
+    tfp_format                               0x00003595   Thumb Code   296  printf.o(i.tfp_format)
+    tfp_printf                               0x000036bd   Thumb Code    34  printf.o(i.tfp_printf)
+    tfp_sprintf                              0x000036e9   Thumb Code    38  printf.o(i.tfp_sprintf)
+    timer_freerun_init                       0x00003715   Thumb Code   142  timer.o(i.timer_freerun_init)
+    timer_irq_init                           0x000037b5   Thumb Code   114  timer.o(i.timer_irq_init)
+    uart_init                                0x00003835   Thumb Code    96  uart_polling.o(i.uart_init)
+    uart_irq_init                            0x000038a1   Thumb Code   166  uart_irq.o(i.uart_irq_init)
+    uart_put_char                            0x0000395d   Thumb Code    42  uart_polling.o(i.uart_put_char)
+    uart_put_string                          0x00003991   Thumb Code    38  uart_polling.o(i.uart_put_string)
+    update_ae_xtest                          0x00003a0d   Thumb Code    18  ae_tasks10_g39.o(i.update_ae_xtest)
+    update_exec_seq                          0x00003a25   Thumb Code    64  ae_tasks10_g39.o(i.update_exec_seq)
+    validateTime                             0x00003a69   Thumb Code    98  wall_clock_task.o(i.validateTime)
+    write_msg                                0x00003acb   Thumb Code    68  k_msg.o(i.write_msg)
+    write_msg_from_waiting_list              0x00003b0f   Thumb Code    64  k_msg.o(i.write_msg_from_waiting_list)
+    write_unblock_buffer                     0x00003b51   Thumb Code   250  k_msg.o(i.write_unblock_buffer)
+    PREFIX                                   0x00003c5c   Data           9  ae_tasks10_g39.o(.constdata)
+    PREFIX_LOG                               0x00003c65   Data          13  ae_tasks10_g39.o(.constdata)
+    PREFIX_LOG2                              0x00003c72   Data          14  ae_tasks10_g39.o(.constdata)
+    Region$$Table$$Base                      0x000041d4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000041f4   Number         0  anon$$obj.o(Region$$Table)
+    g_send_char                              0x10000000   Data           1  uart_irq.o(.data)
+    g_char_in                                0x10000001   Data           1  uart_irq.o(.data)
+    g_tx_irq                                 0x10000002   Data           1  uart_irq.o(.data)
+    g_switch_flag                            0x10000003   Data           1  uart_irq.o(.data)
+    g_timer_count                            0x10000004   Data           4  timer.o(.data)
+    uart_mbx                                 0x10000008   Data           4  k_msg.o(.data)
+    errno                                    0x1000000c   Data           4  k_rtx_init.o(.data)
+    RTList                                   0x10000010   Data           8  k_task.o(.data)
+    suspendedList                            0x10000018   Data           8  k_task.o(.data)
+    gp_current_task                          0x10000020   Data           4  k_task.o(.data)
+    g_num_active_tasks                       0x10000024   Data           4  k_task.o(.data)
+    g_k_stacks                               0x10000040   Data       10240  k_mem.o(.bss)
+    bit_tree_1                               0x10002840   Data          32  k_mem.o(.bss)
+    bit_tree_2                               0x10002860   Data         256  k_mem.o(.bss)
+    free_list_1                              0x10002960   Data          64  k_mem.o(.bss)
+    free_list_2                              0x100029a0   Data          88  k_mem.o(.bss)
+    readyList                                0x100029f8   Data          40  k_task.o(.bss)
+    g_tcbs                                   0x10002a20   Data         440  k_task.o(.bss)
+    g_null_task_info                         0x10002bd8   Data          12  k_task.o(.bss)
+    commands                                 0x10002be4   Data         248  kcd_task.o(.bss)
+    strBuf                                   0x10002cdc   Data          64  kcd_task.o(.bss)
+    __libspace_start                         0x10002d1c   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x10002d7c   Data           0  libspace.o(.bss)
+    g_init_tasks                             0x10002d7c   Data          12  ae_tasks10_g39.o(.bss)
+    g_ae_xtest                               0x10002d88   Data         132  ae_tasks10_g39.o(.bss)
+    g_ae_cases                               0x10002e0c   Data          16  ae_tasks10_g39.o(.bss)
+    g_tsk_cases                              0x10002e1c   Data         144  ae_tasks10_g39.o(.bss)
+    g_buf1                                   0x10002eac   Data         128  ae_tasks10_g39.o(.bss)
+    g_buf2                                   0x10002f2c   Data         128  ae_tasks10_g39.o(.bss)
+    g_tasks                                  0x10002fac   Data          10  ae_tasks10_g39.o(.bss)
+    g_tids                                   0x10002fb6   Data          10  ae_tasks10_g39.o(.bss)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x000000cd
+
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00004234, Max: 0x00080000, ABSOLUTE)
+
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000041f4, Max: 0x00080000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x00000000   0x000000cc   Data   RO         1029    RESET               startup_lpc17xx.o
+    0x000000cc   0x000000cc   0x00000008   Code   RO         1079  * !!!main             c_w.l(__main.o)
+    0x000000d4   0x000000d4   0x00000034   Code   RO         1503    !!!scatter          c_w.l(__scatter.o)
+    0x00000108   0x00000108   0x0000001a   Code   RO         1505    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x00000122   0x00000122   0x00000002   PAD
+    0x00000124   0x00000124   0x0000001c   Code   RO         1507    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x00000140   0x00000140   0x00000002   Code   RO         1176    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1225    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1227    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1230    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1232    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1234    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1237    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1239    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1241    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1243    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1245    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1247    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1249    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1251    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1253    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1255    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1257    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1261    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1263    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1265    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO         1267    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x00000142   0x00000142   0x00000002   Code   RO         1268    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x00000144   0x00000144   0x00000002   Code   RO         1458    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x00000146   0x00000146   0x00000000   Code   RO         1484    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x00000146   0x00000146   0x00000000   Code   RO         1486    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x00000146   0x00000146   0x00000000   Code   RO         1488    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
+    0x00000146   0x00000146   0x00000000   Code   RO         1491    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
+    0x00000146   0x00000146   0x00000000   Code   RO         1494    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x00000146   0x00000146   0x00000000   Code   RO         1496    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
+    0x00000146   0x00000146   0x00000000   Code   RO         1499    .ARM.Collect$$libshutdown$$00000011  c_w.l(libshutdown2.o)
+    0x00000146   0x00000146   0x00000002   Code   RO         1500    .ARM.Collect$$libshutdown$$00000012  c_w.l(libshutdown2.o)
+    0x00000148   0x00000148   0x00000000   Code   RO         1081    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x00000148   0x00000148   0x00000000   Code   RO         1087    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x00000148   0x00000148   0x00000006   Code   RO         1099    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x0000014e   0x0000014e   0x00000000   Code   RO         1089    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x0000014e   0x0000014e   0x00000004   Code   RO         1090    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x00000152   0x00000152   0x00000000   Code   RO         1092    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x00000152   0x00000152   0x00000008   Code   RO         1093    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x0000015a   0x0000015a   0x00000002   Code   RO         1216    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x0000015c   0x0000015c   0x00000000   Code   RO         1367    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x0000015c   0x0000015c   0x00000004   Code   RO         1368    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000160   0x00000160   0x00000006   Code   RO         1369    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x00000166   0x00000166   0x00000002   PAD
+    0x00000168   0x00000168   0x00000008   Code   RO          243    .emb_text           hal.o
+    0x00000170   0x00000170   0x00000032   Code   RO          597    .emb_text           k_task.o
+    0x000001a2   0x000001a2   0x00000002   PAD
+    0x000001a4   0x000001a4   0x0000003c   Code   RO         1031    .text               startup_lpc17xx.o
+    0x000001e0   0x000001e0   0x00000006   Code   RO         1077    .text               c_w.l(heapauxi.o)
+    0x000001e6   0x000001e6   0x0000004a   Code   RO         1163    .text               c_w.l(sys_stackheap_outer.o)
+    0x00000230   0x00000230   0x00000012   Code   RO         1165    .text               c_w.l(exit.o)
+    0x00000242   0x00000242   0x00000002   PAD
+    0x00000244   0x00000244   0x00000008   Code   RO         1213    .text               c_w.l(libspace.o)
+    0x0000024c   0x0000024c   0x0000000c   Code   RO         1364    .text               c_w.l(sys_exit.o)
+    0x00000258   0x00000258   0x00000002   Code   RO         1447    .text               c_w.l(use_no_semi.o)
+    0x0000025a   0x0000025a   0x00000000   Code   RO         1449    .text               c_w.l(indicate_semi.o)
+    0x0000025a   0x0000025a   0x0000002c   Code   RO          295    i.AddToFreeList     k_mem.o
+    0x00000286   0x00000286   0x00000030   Code   RO          296    i.CheckBit          k_mem.o
+    0x000002b6   0x000002b6   0x00000002   PAD
+    0x000002b8   0x000002b8   0x00000040   Code   RO          299    i.GetRelativePos    k_mem.o
+    0x000002f8   0x000002f8   0x00000004   Code   RO         1177    i.ae_exit           ae-lib-sim.lib(ae.o)
+    0x000002fc   0x000002fc   0x00000004   Code   RO         1030    .ARM.__at_0x02FC    startup_lpc17xx.o
+    0x00000300   0x00000300   0x0000013c   Code   RO          297    i.Coalesce          k_mem.o
+    0x0000043c   0x0000043c   0x0000004e   Code   RO          298    i.FlipBit           k_mem.o
+    0x0000048a   0x0000048a   0x00000002   PAD
+    0x0000048c   0x0000048c   0x00000030   Code   RO         1381    i.HardFault_Handler  ae-lib-sim.lib(ae_util.o)
+    0x000004bc   0x000004bc   0x000000c4   Code   RO          300    i.LookForDealloc    k_mem.o
+    0x00000580   0x00000580   0x000000c4   Code   RO          301    i.LookForMemory     k_mem.o
+    0x00000644   0x00000644   0x00000030   Code   RO          302    i.RemoveFromFreeList  k_mem.o
+    0x00000674   0x00000674   0x00000128   Code   RO          244    i.SVC_Handler       hal.o
+    0x0000079c   0x0000079c   0x00000140   Code   RO         1041    i.SystemInit        system_lpc17xx.o
+    0x000008dc   0x000008dc   0x00000054   Code   RO          179    i.TIMER0_IRQHandler  timer.o
+    0x00000930   0x00000930   0x0000010c   Code   RO           87    i.UART0_IRQHandler  uart_irq.o
+    0x00000a3c   0x00000a3c   0x00000068   Code   RO          303    i.WalkFreeList      k_mem.o
+    0x00000aa4   0x00000aa4   0x00000022   Code   RO           88    i.__NVIC_EnableIRQ  uart_irq.o
+    0x00000ac6   0x00000ac6   0x00000032   Code   RO          746    i.a2d               printf.o
+    0x00000af8   0x00000af8   0x0000003a   Code   RO          747    i.a2i               printf.o
+    0x00000b32   0x00000b32   0x00000030   Code   RO         1178    i.ae_init           ae-lib-sim.lib(ae.o)
+    0x00000b62   0x00000b62   0x00000016   Code   RO         1179    i.ae_set_init_tasks_info  ae-lib-sim.lib(ae.o)
+    0x00000b78   0x00000b78   0x00000016   Code   RO         1180    i.ae_set_sys_info   ae-lib-sim.lib(ae.o)
+    0x00000b8e   0x00000b8e   0x00000002   PAD
+    0x00000b90   0x00000b90   0x00000024   Code   RO          432    i.block             k_msg.o
+    0x00000bb4   0x00000bb4   0x00000018   Code   RO          852    i.clear             kcd_task.o
+    0x00000bcc   0x00000bcc   0x000000a0   Code   RO          853    i.cmd_LM            kcd_task.o
+    0x00000c6c   0x00000c6c   0x00000078   Code   RO          854    i.cmd_LT            kcd_task.o
+    0x00000ce4   0x00000ce4   0x00000030   Code   RO          855    i.cmd_map_get       kcd_task.o
+    0x00000d14   0x00000d14   0x0000002c   Code   RO          856    i.cmd_map_register  kcd_task.o
+    0x00000d40   0x00000d40   0x00000046   Code   RO          952    i.convertSeconds    wall_clock_task.o
+    0x00000d86   0x00000d86   0x00000012   Code   RO         1382    i.count_set_bits    ae-lib-sim.lib(ae_util.o)
+    0x00000d98   0x00000d98   0x00000030   Code   RO          598    i.dequeue           k_task.o
+    0x00000dc8   0x00000dc8   0x0000008a   Code   RO          599    i.enqueue           k_task.o
+    0x00000e52   0x00000e52   0x00000034   Code   RO          433    i.enqueueML         k_msg.o
+    0x00000e86   0x00000e86   0x00000002   PAD
+    0x00000e88   0x00000e88   0x00000074   Code   RO          857    i.err               kcd_task.o
+    0x00000efc   0x00000efc   0x0000001c   Code   RO          304    i.exponent          k_mem.o
+    0x00000f18   0x00000f18   0x0000004c   Code   RO         1269    i.gen_req0          ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00000f64   0x00000f64   0x00000048   Code   RO         1270    i.gen_req1          ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00000fac   0x00000fac   0x00000064   Code   RO          858    i.get_states        kcd_task.o
+    0x00001010   0x00001010   0x00000048   Code   RO          180    i.get_tick          timer.o
+    0x00001058   0x00001058   0x00000020   Code   RO          748    i.i2a               printf.o
+    0x00001078   0x00001078   0x0000007c   Code   RO         1271    i.init_ae_tsk_test  ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x000010f4   0x000010f4   0x00000014   Code   RO          749    i.init_printf       printf.o
+    0x00001108   0x00001108   0x0000002c   Code   RO          305    i.k_alloc_k_stack   k_mem.o
+    0x00001134   0x00001134   0x0000004c   Code   RO          306    i.k_alloc_user_stack  k_mem.o
+    0x00001180   0x00001180   0x000000d8   Code   RO          434    i.k_mbx_create      k_msg.o
+    0x00001258   0x00001258   0x00000044   Code   RO          435    i.k_mbx_get         k_msg.o
+    0x0000129c   0x0000129c   0x00000050   Code   RO          436    i.k_mbx_ls          k_msg.o
+    0x000012ec   0x000012ec   0x00000040   Code   RO          307    i.k_mem_init        k_mem.o
+    0x0000132c   0x0000132c   0x0000007c   Code   RO          308    i.k_mpool_alloc     k_mem.o
+    0x000013a8   0x000013a8   0x00000064   Code   RO          309    i.k_mpool_create    k_mem.o
+    0x0000140c   0x0000140c   0x000000dc   Code   RO          310    i.k_mpool_dealloc   k_mem.o
+    0x000014e8   0x000014e8   0x00000060   Code   RO          311    i.k_mpool_dump      k_mem.o
+    0x00001548   0x00001548   0x00000026   Code   RO          553    i.k_pre_rtx_init    k_rtx_init.o
+    0x0000156e   0x0000156e   0x00000002   PAD
+    0x00001570   0x00001570   0x0000001c   Code   RO          437    i.k_recv_msg        k_msg.o
+    0x0000158c   0x0000158c   0x000000a0   Code   RO          438    i.k_recv_msg_general  k_msg.o
+    0x0000162c   0x0000162c   0x0000001c   Code   RO          439    i.k_recv_msg_nb     k_msg.o
+    0x00001648   0x00001648   0x0000006c   Code   RO          600    i.k_rt_tsk_get      k_task.o
+    0x000016b4   0x000016b4   0x000000c0   Code   RO          601    i.k_rt_tsk_set      k_task.o
+    0x00001774   0x00001774   0x000000a4   Code   RO          602    i.k_rt_tsk_susp     k_task.o
+    0x00001818   0x00001818   0x00000060   Code   RO          603    i.k_rt_tsk_unsusp   k_task.o
+    0x00001878   0x00001878   0x00000054   Code   RO          554    i.k_rtx_init        k_rtx_init.o
+    0x000018cc   0x000018cc   0x00000294   Code   RO          440    i.k_send_general    k_msg.o
+    0x00001b60   0x00001b60   0x00000014   Code   RO          441    i.k_send_msg        k_msg.o
+    0x00001b74   0x00001b74   0x00000014   Code   RO          442    i.k_send_msg_nb     k_msg.o
+    0x00001b88   0x00001b88   0x000000f4   Code   RO          604    i.k_tsk_create      k_task.o
+    0x00001c7c   0x00001c7c   0x000000fc   Code   RO          605    i.k_tsk_create_new  k_task.o
+    0x00001d78   0x00001d78   0x000000c8   Code   RO          606    i.k_tsk_exit        k_task.o
+    0x00001e40   0x00001e40   0x0000008c   Code   RO          607    i.k_tsk_get         k_task.o
+    0x00001ecc   0x00001ecc   0x0000000c   Code   RO          608    i.k_tsk_gettid      k_task.o
+    0x00001ed8   0x00001ed8   0x00000128   Code   RO          609    i.k_tsk_init        k_task.o
+    0x00002000   0x00002000   0x0000001c   Code   RO          610    i.k_tsk_init_first  k_task.o
+    0x0000201c   0x0000201c   0x00000050   Code   RO          611    i.k_tsk_init_kcd_con  k_task.o
+    0x0000206c   0x0000206c   0x00000050   Code   RO          612    i.k_tsk_ls          k_task.o
+    0x000020bc   0x000020bc   0x000000c0   Code   RO          613    i.k_tsk_run_new     k_task.o
+    0x0000217c   0x0000217c   0x0000019c   Code   RO          614    i.k_tsk_set_prio    k_task.o
+    0x00002318   0x00002318   0x0000001c   Code   RO          615    i.k_tsk_yield       k_task.o
+    0x00002334   0x00002334   0x00000022   Code   RO          312    i.log_ceil          k_mem.o
+    0x00002356   0x00002356   0x00000002   PAD
+    0x00002358   0x00002358   0x00000068   Code   RO         1105    i.main              ae-lib-sim.lib(main.o)
+    0x000023c0   0x000023c0   0x00000088   Code   RO          443    i.mbx_create_general  k_msg.o
+    0x00002448   0x00002448   0x00000052   Code   RO          444    i.pop_msg           k_msg.o
+    0x0000249a   0x0000249a   0x00000040   Code   RO          989    i.prep_msg          tsk_util.o
+    0x000024da   0x000024da   0x00000002   PAD
+    0x000024dc   0x000024dc   0x00000070   Code   RO         1383    i.print_log         ae-lib-sim.lib(ae_util.o)
+    0x0000254c   0x0000254c   0x00000120   Code   RO         1384    i.print_results     ae-lib-sim.lib(ae_util.o)
+    0x0000266c   0x0000266c   0x0000002c   Code   RO         1385    i.print_summary     ae-lib-sim.lib(ae_util.o)
+    0x00002698   0x00002698   0x00000038   Code   RO         1386    i.process_sub_result  ae-lib-sim.lib(ae_util.o)
+    0x000026d0   0x000026d0   0x00000044   Code   RO            4    i.putc              uart_polling.o
+    0x00002714   0x00002714   0x00000052   Code   RO          750    i.putchw            printf.o
+    0x00002766   0x00002766   0x0000000a   Code   RO          751    i.putcp             printf.o
+    0x00002770   0x00002770   0x000000cc   Code   RO          616    i.scheduler         k_task.o
+    0x0000283c   0x0000283c   0x0000001c   Code   RO         1272    i.set_ae_init_tasks  ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00002858   0x00002858   0x00000044   Code   RO         1273    i.set_ae_tasks      ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x0000289c   0x0000289c   0x00000020   Code   RO         1387    i.strcpy            ae-lib-sim.lib(ae_util.o)
+    0x000028bc   0x000028bc   0x00000020   Code   RO          990    i.stringCopy        tsk_util.o
+    0x000028dc   0x000028dc   0x00000012   Code   RO          991    i.strlen            tsk_util.o
+    0x000028ee   0x000028ee   0x00000002   PAD
+    0x000028f0   0x000028f0   0x00000348   Code   RO         1274    i.task0             ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00002c38   0x00002c38   0x0000012c   Code   RO         1275    i.task1             ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00002d64   0x00002d64   0x0000007c   Code   RO         1276    i.task2             ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00002de0   0x00002de0   0x0000003c   Code   RO          811    i.task_cdisp        cdisp_task.o
+    0x00002e1c   0x00002e1c   0x00000124   Code   RO          859    i.task_kcd          kcd_task.o
+    0x00002f40   0x00002f40   0x00000006   Code   RO          924    i.task_null         null_task.o
+    0x00002f46   0x00002f46   0x00000002   PAD
+    0x00002f48   0x00002f48   0x0000019c   Code   RO          953    i.task_wall_clock   wall_clock_task.o
+    0x000030e4   0x000030e4   0x000001ac   Code   RO         1277    i.test0_start       ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00003290   0x00003290   0x00000274   Code   RO         1278    i.test1_start       ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00003504   0x00003504   0x0000006c   Code   RO         1388    i.test_abort        ae-lib-sim.lib(ae_util.o)
+    0x00003570   0x00003570   0x00000024   Code   RO         1389    i.test_exit         ae-lib-sim.lib(ae_util.o)
+    0x00003594   0x00003594   0x00000128   Code   RO          752    i.tfp_format        printf.o
+    0x000036bc   0x000036bc   0x0000002c   Code   RO          753    i.tfp_printf        printf.o
+    0x000036e8   0x000036e8   0x0000002c   Code   RO          754    i.tfp_sprintf       printf.o
+    0x00003714   0x00003714   0x000000a0   Code   RO          181    i.timer_freerun_init  timer.o
+    0x000037b4   0x000037b4   0x00000080   Code   RO          182    i.timer_irq_init    timer.o
+    0x00003834   0x00003834   0x0000006c   Code   RO            6    i.uart_init         uart_polling.o
+    0x000038a0   0x000038a0   0x000000bc   Code   RO           89    i.uart_irq_init     uart_irq.o
+    0x0000395c   0x0000395c   0x00000034   Code   RO            7    i.uart_put_char     uart_polling.o
+    0x00003990   0x00003990   0x00000026   Code   RO            8    i.uart_put_string   uart_polling.o
+    0x000039b6   0x000039b6   0x00000056   Code   RO          755    i.ui2a              printf.o
+    0x00003a0c   0x00003a0c   0x00000018   Code   RO         1279    i.update_ae_xtest   ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00003a24   0x00003a24   0x00000044   Code   RO         1280    i.update_exec_seq   ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00003a68   0x00003a68   0x00000062   Code   RO          954    i.validateTime      wall_clock_task.o
+    0x00003aca   0x00003aca   0x00000044   Code   RO          445    i.write_msg         k_msg.o
+    0x00003b0e   0x00003b0e   0x00000040   Code   RO          446    i.write_msg_from_waiting_list  k_msg.o
+    0x00003b4e   0x00003b4e   0x00000002   PAD
+    0x00003b50   0x00003b50   0x0000010c   Code   RO          447    i.write_unblock_buffer  k_msg.o
+    0x00003c5c   0x00003c5c   0x00000024   Data   RO         1282    .constdata          ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x00003c80   0x00003c80   0x00000552   Data   RO         1283    .conststring        ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x000041d2   0x000041d2   0x00000002   PAD
+    0x000041d4   0x000041d4   0x00000020   Data   RO         1501    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Exec base: 0x10000000, Load base: 0x000041f4, Size: 0x000031c0, Max: 0x00007000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x10000000   0x000041f4   0x00000004   Data   RW           90    .data               uart_irq.o
+    0x10000004   0x000041f8   0x00000004   Data   RW          183    .data               timer.o
+    0x10000008   0x000041fc   0x00000004   Data   RW          448    .data               k_msg.o
+    0x1000000c   0x00004200   0x00000004   Data   RW          555    .data               k_rtx_init.o
+    0x10000010   0x00004204   0x00000018   Data   RW          618    .data               k_task.o
+    0x10000028   0x0000421c   0x00000008   Data   RW          756    .data               printf.o
+    0x10000030   0x00004224   0x00000010   Data   RW         1106    .data               ae-lib-sim.lib(main.o)
+    0x10000040        -       0x000029b8   Zero   RW          313    .bss                k_mem.o
+    0x100029f8        -       0x000001ec   Zero   RW          617    .bss                k_task.o
+    0x10002be4        -       0x00000138   Zero   RW          860    .bss                kcd_task.o
+    0x10002d1c        -       0x00000060   Zero   RW         1214    .bss                c_w.l(libspace.o)
+    0x10002d7c        -       0x00000244   Zero   RW         1281    .bss                ae-lib-sim.lib(ae_tasks10_g39.o)
+    0x10002fc0        -       0x00000000   Zero   RW         1028    HEAP                startup_lpc17xx.o
+    0x10002fc0        -       0x00000200   Zero   RW         1027    STACK               startup_lpc17xx.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+        60          4          0          0          0        981   cdisp_task.o
+       304         24          0          0          0       6719   hal.o
+      1880        196          0          0      10680      15859   k_mem.o
+      1986        104          0          4          0      12969   k_msg.o
+       122         10          0          4          0       5682   k_rtx_init.o
+      2964        284          0         24        492      20744   k_task.o
+       904        196          0          0        312       5975   kcd_task.o
+         6          0          0          0          0        428   null_task.o
+       722         26          0          8          0       6790   printf.o
+        64         26        204          0        512       1060   startup_lpc17xx.o
+       320         18          0          0          0        605   system_lpc17xx.o
+       444         56          0          4          0      30436   timer.o
+       114          0          0          0          0       2257   tsk_util.o
+       490         44          0          4          0      32533   uart_irq.o
+       266         62          0          0          0      24393   uart_polling.o
+       580         70          0          0          0       2842   wall_clock_task.o
+
+    ----------------------------------------------------------------------
+     11246       1120        236         48      11996     170273   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+        20          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+        96          0          0          0          0       5003   ae.o
+      2780        860       1398          0        580      10228   ae_tasks10_g39.o
+       742        390          0          0          0       5998   ae_util.o
+       104         20          0         16          0       4951   main.o
+         8          0          0          0          0         68   __main.o
+         0          0          0          0          0          0   __rtentry.o
+        12          0          0          0          0          0   __rtentry2.o
+         6          0          0          0          0          0   __rtentry4.o
+        52          8          0          0          0          0   __scatter.o
+        26          0          0          0          0          0   __scatter_copy.o
+        28          0          0          0          0          0   __scatter_zi.o
+        18          0          0          0          0         80   exit.o
+         6          0          0          0          0        152   heapauxi.o
+         0          0          0          0          0          0   indicate_semi.o
+         2          0          0          0          0          0   libinit.o
+         2          0          0          0          0          0   libinit2.o
+         2          0          0          0          0          0   libshutdown.o
+         2          0          0          0          0          0   libshutdown2.o
+         8          4          0          0         96         68   libspace.o
+         2          0          0          0          0          0   rtexit.o
+        10          0          0          0          0          0   rtexit2.o
+        12          4          0          0          0         68   sys_exit.o
+        74          0          0          0          0         80   sys_stackheap_outer.o
+         2          0          0          0          0         68   use_no_semi.o
+
+    ----------------------------------------------------------------------
+      4002       1286       1400         16        676      26764   Library Totals
+         8          0          2          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+      3722       1270       1398         16        580      26180   ae-lib-sim.lib
+       272         16          0          0         96        584   c_w.l
+
+    ----------------------------------------------------------------------
+      4002       1286       1400         16        676      26764   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+     15248       2406       1636         64      12672     190793   Grand Totals
+     15248       2406       1636         64      12672     190793   ELF Image Totals
+     15248       2406       1636         64          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                16884 (  16.49kB)
+    Total RW  Size (RW Data + ZI Data)             12736 (  12.44kB)
+    Total ROM Size (Code + RO Data + RW Data)      16948 (  16.55kB)
+
+==============================================================================
+

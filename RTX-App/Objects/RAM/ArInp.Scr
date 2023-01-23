@@ -1,0 +1,15 @@
+--create .\Objects\RAM\rtx-app-ram.lib
+.\objects\ram\uart_polling.o
+.\objects\ram\uart_irq.o
+.\objects\ram\timer.o
+.\objects\ram\hal.o
+.\objects\ram\k_mem.o
+.\objects\ram\k_msg.o
+.\objects\ram\k_rtx_init.o
+.\objects\ram\k_task.o
+.\objects\ram\printf.o
+.\objects\ram\cdisp_task.o
+.\objects\ram\kcd_task.o
+.\objects\ram\null_task.o
+.\objects\ram\wall_clock_task.o
+..\AE-Lib\Objects\RAM\ae-lib-ram.lib
