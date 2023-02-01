@@ -1,5 +1,6 @@
 Skeleton files provided by ECE department
 
+For all code I wrote myself go to Rtx-App/src/kernel or this link: https://github.com/Jordandde/Real-time-Operating-System/tree/master/RTX-App/src/kernel
 AE-Lib/  The automated testing framework library uVision project.
 inlcude/ The RTX API, board support package, and automated testing suite header files folder. 
 RTX-APP/ The RTX application skelton project which includes the kernel.
