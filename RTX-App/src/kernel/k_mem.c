@@ -141,18 +141,18 @@ mpool_t k_mpool_create (int algo, U32 start, U32 end)
     
     if ( start == RAM1_START) {
 
-	    DNODE *ptr = (void *) RAM1_START;
+	DNODE *ptr = (void *) RAM1_START;
         ptr->next = NULL;
-	    ptr->prev = NULL;
+	ptr->prev = NULL;
 
         free_list_1[0].head = (void *)((char *)ptr);
 
     } else if ( start == RAM2_START) {
         mpid = MPID_IRAM2;
 
-	    DNODE *ptr = (void *) RAM2_START;
-	    ptr->next = NULL;
-	    ptr->prev = NULL;
+	DNODE *ptr = (void *) RAM2_START;
+	ptr->next = NULL;
+	ptr->prev = NULL;
         free_list_2[0].head = (void *)((char *)ptr);
     } else {
         errno = EINVAL;
@@ -186,11 +186,11 @@ int exponent(int base, int exp){
     if(exp == 0){
         return 1;
     }
-	int ans = base;
-	for(int i = 1; i < exp; i++){
-		ans *= base;
-	}
-	return ans;
+    int ans = base;
+    for(int i = 1; i < exp; i++){
+	ans *= base;
+    }
+    return ans;
 }
 
 void FlipBit(U8 bit_tree[], int level, int address, int base, int size) {
@@ -200,7 +200,7 @@ void FlipBit(U8 bit_tree[], int level, int address, int base, int size) {
     int addSecond = basicAddress % 8;
 
 
-	bit_tree[addFirst] ^= (1 << addSecond);
+    bit_tree[addFirst] ^= (1 << addSecond);
 }
 
 void *LookForMemory(DLIST free_list[], U8 bit_tree[], int level, mpool_t mpid) {
@@ -236,7 +236,7 @@ void *LookForMemory(DLIST free_list[], U8 bit_tree[], int level, mpool_t mpid) {
     if(free_list[level].head->next != NULL) {
 			
         free_list[level].head->next->prev = NULL;
-		free_list[level].head = free_list[level].head->next;
+	free_list[level].head = free_list[level].head->next;
     } else {
         free_list[level].head = NULL;
     }
@@ -249,7 +249,7 @@ void *k_mpool_alloc (mpool_t mpid, size_t size)
     printf("k_mpool_alloc: mpid = %d, size = %d, 0x%x\r\n", mpid, size, size);
 #endif /* DEBUG_0 */
 
-    //ML - mpid validity check
+    
     if(mpid != MPID_IRAM1 && mpid != MPID_IRAM2) {
         errno = EINVAL;
         return (void*) NULL;
@@ -262,7 +262,6 @@ void *k_mpool_alloc (mpool_t mpid, size_t size)
         // Accomodate minimum size of a block, 32 or 2^5
         sizeNeededLog = 5;
     } else if(sizeNeededLog > maxSizeLog) {
-        	//ML - more space requested than is available
         errno = ENOMEM;
         return (void*) NULL;
     }
