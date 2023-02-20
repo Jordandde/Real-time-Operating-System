@@ -90,7 +90,6 @@ typedef struct node {
     struct node *prev;
 } Node;
 
-// TODO: if code is too big consider consolodating the list types to this one
 typedef struct message_list {
     Node *head;
     Node *tail;
@@ -111,11 +110,11 @@ typedef struct mailbox {
 } Mailbox;
 
 typedef struct tcb {
-    struct tcb *prev;         /**< prev tcb, not used in the starter code     */
-    struct tcb *next;         /**< next tcb, not used in the starter code     */
-    U32        *msp;          /**< kernel sp of the task, TCB_MSP_OFFSET = 8  */
-    U32        *usp;          /**< user sp of the task, TCB_MSP_OFFSET = 8  */
-    U32 usize;
+    struct tcb  *prev;         /**< prev tcb, not used in the starter code     */
+    struct tcb  *next;         /**< next tcb, not used in the starter code     */
+    U32         *msp;          /**< kernel sp of the task, TCB_MSP_OFFSET = 8  */
+    U32         *usp;          /**< user sp of the task, TCB_MSP_OFFSET = 8  */
+    U32         usize;
     U32         lowu;
     U32         lowk;
     U8          state;        /**< task state                                 */
@@ -123,8 +122,8 @@ typedef struct tcb {
     U8          tid;          /**< task id                                    */
     U8          prio;         /**< scheduling priority                        */
     void        (*ptask)();
-    Mailbox *mbx;
-    RT_Info *rt;
+    Mailbox     *mbx;
+    RT_Info     *rt;
 } TCB;
 
 typedef struct tcblist {

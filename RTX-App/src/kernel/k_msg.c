@@ -42,7 +42,6 @@
 //Mailbox g_mbxs[MAX_TASKS];
 Mailbox *uart_mbx;
 // Block the currently running task
-// TODO: Look into switching this to make it work with k_tsk_run_new
 void block(int blockType) {
     if(blockType) {
         gp_current_task->state = BLK_SEND;
@@ -50,13 +49,6 @@ void block(int blockType) {
         gp_current_task->state = BLK_RECV;
     }
    k_tsk_run_new(FRONT); 
-   /*
-    TCB *p_tcb_old = gp_current_task;
-    gp_current_task = NULL;
-    gp_current_task = scheduler(FRONT);
-    gp_current_task->state = RUNNING;
-    k_tsk_switch(p_tcb_old);
-    */
 }
 
 void enqueueML(MSGList waitingList[5], Node *curr, int prio) {
@@ -165,16 +157,16 @@ int write_msg_from_waiting_list(Mailbox *mbx, int tid) {
     return -1;
 }
 void mbx_create_general(size_t size, Mailbox *mbx, int tid) {
-   void *buf = k_mpool_alloc(MPID_IRAM2, sizeof(Mailbox) + sizeof(Ring_buffer) + size + sizeof(MSGList) * 5);
-  uart_mbx = (Mailbox *) buf;
-  uart_mbx->buffer = (void *)((char *)buf + sizeof(Mailbox));
-  uart_mbx->buffer->buff = (void *)((char *)buf + sizeof(Mailbox) + sizeof(Ring_buffer));
-  uart_mbx->waitingList = (void *)((char *)buf + sizeof(Mailbox) + sizeof(Ring_buffer) + size);
-  uart_mbx->buffer->length = (int)size;
-  uart_mbx->buffer->head= 0;
-  uart_mbx->buffer->tail= 0;
-  uart_mbx->buffer->used= 0;
-  uart_mbx->id = tid;
+    void *buf = k_mpool_alloc(MPID_IRAM2, sizeof(Mailbox) + sizeof(Ring_buffer) + size + sizeof(MSGList) * 5);
+    uart_mbx = (Mailbox *) buf;
+    uart_mbx->buffer = (void *)((char *)buf + sizeof(Mailbox));
+    uart_mbx->buffer->buff = (void *)((char *)buf + sizeof(Mailbox) + sizeof(Ring_buffer));
+    uart_mbx->waitingList = (void *)((char *)buf + sizeof(Mailbox) + sizeof(Ring_buffer) + size);
+    uart_mbx->buffer->length = (int)size;
+    uart_mbx->buffer->head= 0;
+    uart_mbx->buffer->tail= 0;
+    uart_mbx->buffer->used= 0;
+    uart_mbx->id = tid;
 
     for(int i = 0 ; i < 5; i++) {
 
@@ -195,21 +187,21 @@ int k_mbx_create(size_t size) {
         errno = EINVAL;
         return RTX_ERR;
     }
-  void *buf = k_mpool_alloc(MPID_IRAM2, sizeof(Mailbox) + sizeof(Ring_buffer) + size + sizeof(MSGList) * 5);
-  if(buf == NULL) {
-    errno = ENOMEM;
-    return RTX_ERR;
-  }
-  gp_current_task->mbx = buf;
-  gp_current_task->mbx->buffer = (void *)((char *)buf + sizeof(Mailbox));
-  gp_current_task->mbx->buffer->buff = (void *)((char *)buf + sizeof(Mailbox) + sizeof(Ring_buffer));
-  gp_current_task->mbx->waitingList = (void *)((char *)buf + sizeof(Mailbox) + sizeof(Ring_buffer) + size);
-  gp_current_task->mbx->buffer->length = (int)size;
-  gp_current_task->mbx->buffer->head= 0;
-  gp_current_task->mbx->buffer->tail= 0;
-  gp_current_task->mbx->buffer->used= 0;
-  gp_current_task->mbx->id = gp_current_task->tid;
-for(int i = 0 ; i < 5; i++) {
+    void *buf = k_mpool_alloc(MPID_IRAM2, sizeof(Mailbox) + sizeof(Ring_buffer) + size + sizeof(MSGList) * 5);
+    if(buf == NULL) {
+        errno = ENOMEM;
+        return RTX_ERR;
+    }
+    gp_current_task->mbx = buf;
+    gp_current_task->mbx->buffer = (void *)((char *)buf + sizeof(Mailbox));
+    gp_current_task->mbx->buffer->buff = (void *)((char *)buf + sizeof(Mailbox) + sizeof(Ring_buffer));
+    gp_current_task->mbx->waitingList = (void *)((char *)buf + sizeof(Mailbox) + sizeof(Ring_buffer) + size);
+    gp_current_task->mbx->buffer->length = (int)size;
+    gp_current_task->mbx->buffer->head= 0;
+    gp_current_task->mbx->buffer->tail= 0;
+    gp_current_task->mbx->buffer->used= 0;
+    gp_current_task->mbx->id = gp_current_task->tid;
+    for(int i = 0 ; i < 5; i++) {
 
         gp_current_task->mbx->waitingList[i].head = NULL;
         gp_current_task->mbx->waitingList[i].tail= NULL;
@@ -296,10 +288,10 @@ int k_send_general(task_t receiver_tid, int preempt, const void *buf, int blocki
                 k_tsk_run_new(SORTED);
             }
         } else {
-        enqueue(&readyList[p_tcb->prio %0x80], BACK, p_tcb);
-        if((p_tcb->prio < gp_current_task->prio) && preempt)  {
-            k_tsk_yield();
-        }
+            enqueue(&readyList[p_tcb->prio %0x80], BACK, p_tcb);
+            if((p_tcb->prio < gp_current_task->prio) && preempt)  {
+                k_tsk_yield();
+            }
         }
     } else {
         int state = write_msg(mbx->buffer, buf);
@@ -330,7 +322,6 @@ int k_send_general(task_t receiver_tid, int preempt, const void *buf, int blocki
     return 0;
 }
 
-// TODO: Error checking including case when we send to a dormant task and more
 int k_send_msg(task_t receiver_tid, const void *buf) {
 #ifdef DEBUG_0
     printf("k_send_msg: receiver_tid = %d, buf=0x%x\r\n", receiver_tid, buf);
@@ -348,29 +339,29 @@ int k_send_msg_nb(task_t receiver_tid, const void *buf) {
 
 int k_recv_msg_general(void *buf, size_t len, int blocking, int tid) {
 
-  if(buf == NULL) {
-    errno = EFAULT;
-    return RTX_ERR;
-  }
-  Mailbox *mbx;
-  if(tid == TID_UART) {
-    mbx = uart_mbx;
-  } else {
-    mbx = gp_current_task->mbx;
-  }
-  if(mbx == NULL) {
-    // no mailbox
-    errno = ENOENT;
-    return RTX_ERR;
-  }
-  while(mbx->msgsWaiting == 0 && mbx->buffer->used == 0) {
-    // no messages, if we need to block we do so now 
-    if(!blocking) {
-        errno = ENOMSG;
+    if(buf == NULL) {
+        errno = EFAULT;
         return RTX_ERR;
     }
-    block(0);
-  } 
+    Mailbox *mbx;
+    if(tid == TID_UART) {
+        mbx = uart_mbx;
+    } else {
+        mbx = gp_current_task->mbx;
+    }
+    if(mbx == NULL) {
+        // no mailbox
+        errno = ENOENT;
+        return RTX_ERR;
+    }
+    while(mbx->msgsWaiting == 0 && mbx->buffer->used == 0) {
+    // no messages, if we need to block we do so now 
+        if(!blocking) {
+            errno = ENOMSG;
+            return RTX_ERR;
+        }
+        block(0);
+    } 
     if(mbx->buffer->used == 0) {
         // we have messages waiting but none in the mailbox
         // we can assume that this wont error as we cant send a message bigger than a mail box
@@ -391,14 +382,14 @@ int k_recv_msg(void *buf, size_t len) {
 #ifdef DEBUG_0
     printf("k_recv_msg: buf=0x%x, len=%d\r\n", buf, len);
 #endif /* DEBUG_0 */
-return k_recv_msg_general(buf, len, 1, gp_current_task->tid);
+    return k_recv_msg_general(buf, len, 1, gp_current_task->tid);
 }
 
 int k_recv_msg_nb(void *buf, size_t len) {
 #ifdef DEBUG_0
     printf("k_recv_msg_nb: buf=0x%x, len=%d\r\n", buf, len);
 #endif /* DEBUG_0 */
-return k_recv_msg_general(buf, len, 0, gp_current_task->tid);
+    return k_recv_msg_general(buf, len, 0, gp_current_task->tid);
 }
  
 

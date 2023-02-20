@@ -92,7 +92,6 @@ int  k_tsk_set_prio     (task_t task_id, U8 prio);
 int  k_tsk_get          (task_t task_id, RTX_TASK_INFO *buffer);
 TCB  *scheduler         (int side);  /* student needs to change this function */
 int  k_tsk_ls           (task_t *buf, size_t count);
-//int  k_rt_tsk_set       (TASK_RT *p_rt_task);
 int  k_rt_tsk_set       (TIMEVAL *p_tv);
 int  k_rt_tsk_susp      (void);
 int  k_rt_tsk_unsusp      (void);

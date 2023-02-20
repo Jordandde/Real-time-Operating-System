@@ -111,10 +111,6 @@ U32 g_k_stacks[MAX_TASKS][KERN_STACK_SIZE >> 2] __attribute__((aligned(8)));
 // task process stack (i.e. user stack) for tasks in thread mode
 // remove this bug array in your lab2 code
 // the user stack should come from MPID_IRAM2 memory pool
-//U32 g_p_stacks[MAX_TASKS][PROC_STACK_SIZE >> 2] __attribute__((aligned(8)));
-// Kept for the null task
-// TODO: If there are issues in memory address values changing look into if this is the cause
-//U32 g_p_stacks[1][PROC_STACK_SIZE >> 2] __attribute__((aligned(8)));
 /*
  *===========================================================================
  *                            FUNCTIONS
@@ -145,18 +141,18 @@ mpool_t k_mpool_create (int algo, U32 start, U32 end)
     
     if ( start == RAM1_START) {
 
-		DNODE *ptr = (void *) RAM1_START;
+	    DNODE *ptr = (void *) RAM1_START;
         ptr->next = NULL;
-		ptr->prev = NULL;
+	    ptr->prev = NULL;
 
         free_list_1[0].head = (void *)((char *)ptr);
 
     } else if ( start == RAM2_START) {
         mpid = MPID_IRAM2;
 
-		DNODE *ptr = (void *) RAM2_START;
-		ptr->next = NULL;
-		ptr->prev = NULL;
+	    DNODE *ptr = (void *) RAM2_START;
+	    ptr->next = NULL;
+	    ptr->prev = NULL;
         free_list_2[0].head = (void *)((char *)ptr);
     } else {
         errno = EINVAL;
@@ -321,12 +317,12 @@ int Coalesce(DLIST free_list[],U8 bit_tree[], DNODE *ptr, /*int pos,*/ int level
         return 0;
     }
     // Coalesce
-        if(free_list[level].head == ptr) {
-            free_list[level].head = free_list[level].head->next;
-            free_list[level].head->prev =NULL;
-        } else {
-    RemoveFromFreeList(free_list[level].head, level, (int)ptr);
-        }
+    if(free_list[level].head == ptr) {
+        free_list[level].head = free_list[level].head->next;
+        free_list[level].head->prev =NULL;
+    } else {
+        RemoveFromFreeList(free_list[level].head, level, (int)ptr);
+    }
     int buddyAdd= (int)ptr;
     int firstAdd = (int)ptr;
     int lower = level - 1;
@@ -404,20 +400,18 @@ int k_mpool_dealloc(mpool_t mpid, void *ptr)
     printf("k_mpool_dealloc: mpid = %d, ptr = 0x%x\r\n", mpid, ptr);
 #endif /* DEBUG_0 */
 
-//ML - mpid validity check
-		if(mpid != MPID_IRAM1 && mpid != MPID_IRAM2) {
-				errno = EINVAL;
-				return RTX_ERR;
-		}
-		
-		//ML - check whether pointer is within the address space between
-		//RAM1_START and end of IRAM1
-		int pool_start = (mpid == MPID_IRAM1 ? RAM1_START: RAM2_START);
-		int pool_end = (mpid == MPID_IRAM1 ? RAM1_END: RAM2_END);
-		if((int)ptr < pool_start || (int)ptr > pool_end) {
-				errno = EFAULT;
-				return -1;
-		}
+    if(mpid != MPID_IRAM1 && mpid != MPID_IRAM2) {
+        errno = EINVAL;
+        return RTX_ERR;
+    }
+    
+    //RAM1_START and end of IRAM1
+    int pool_start = (mpid == MPID_IRAM1 ? RAM1_START: RAM2_START);
+    int pool_end = (mpid == MPID_IRAM1 ? RAM1_END: RAM2_END);
+    if((int)ptr < pool_start || (int)ptr > pool_end) {
+        errno = EFAULT;
+        return -1;
+    }
 
     int level = (mpid == MPID_IRAM1 ? RAM1_SIZE_LOG2: RAM2_SIZE_LOG2) - 5;
     int exp = (mpid == MPID_IRAM1 ? RAM1_SIZE_LOG2 : RAM2_SIZE_LOG2) - level;
@@ -456,9 +450,9 @@ int k_mpool_dump (mpool_t mpid)
 #endif /* DEBUG_0 */
 
 //ML - mpid validity check
-		if(mpid != MPID_IRAM1 && mpid != MPID_IRAM2) {
-				return 0;
-		}
+    if(mpid != MPID_IRAM1 && mpid != MPID_IRAM2) {
+        return 0;
+    }
 
     int level = (mpid == MPID_IRAM1 ? RAM1_SIZE_LOG2: RAM2_SIZE_LOG2) - 5;
     int blocks =  WalkFreeList((mpid == MPID_IRAM1 ? free_list_1 : free_list_2), level, mpid);
